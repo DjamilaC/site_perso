@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -31,7 +31,7 @@
                         <!-- la barre de navigation -->
                 <nav class="navbar navbar-expand-lg col-md-11 navbar-light bg-light">
                     <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"             data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"         aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse"
@@ -84,8 +84,6 @@
 
             
         </header>
-        <hr>
-
 
         <main>
                         <!-- la partie en dessous de limage du header -->
@@ -192,6 +190,8 @@
             
 
         </main> <!--Fin du Main-->
+
+
         <footer>
             <div class="row col-md-12 mt-5 pt-5">
                 <div class="col-md-3">
@@ -236,3 +236,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
     </html>
+
+
+
+
+
+    
