@@ -7,9 +7,8 @@ require_once("include/header2.php");
 <!-- page Content -->
 <div class="container-fluid">    
        <section class="row connexion">        
-            <h1 class="text text-center mx-auto mt-5 pt-5"> Ma page de connexion</h1>
-            <!-- Main -->
-            <section class="col-md-12 mx-auto">
+                        
+            <div class="col-md-12 mx-auto">
                      
                      <form method="post" action="" class="col-md-4 offset-md-3 form_connexion">
                          <h2 class="titre-connexion text text-center">Connexion</h2>
@@ -28,7 +27,7 @@ require_once("include/header2.php");
                          <button type="submit" class="col-md-4 offset-md-4 btn btn-secondary" >Connexion</button>
  
                      </form>   
-            </section>
+            </div>
         </section>  
     
    

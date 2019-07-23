@@ -25,7 +25,7 @@
             <div class="row">
 
                 <div class="col-md-1 bg-light">
-                    <img class="logo" src="images/logo_R1.png" alt="">
+                    <img class="logo" src="images/logo_R2.png" alt="">
                 </div>
 
                         <!-- la barre de navigation -->
