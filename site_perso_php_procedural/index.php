@@ -54,59 +54,50 @@ require_once("include/header.php");
             <hr>
              <!-- debut des cards -->
             <div class="row">
-                <div class="col-md-3 mt-4">
+                <div class="col-md-4 mt-4">
 
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img src="images/image4.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    
-                                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
-                                    <h5 class="card-title text text-center">Card title</h5>
-                                </div>
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <a href="appartement.php"><img src="images/image4.jpg" class="card-img-top" alt="..."></a> 
+                        <div class="card-body">
+                            
+                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
+                            <h5 class="card-title text text-center">Nos Appartements</h5>
                         </div>
+                    </div>
 
                 </div>
 
-                <div class="col-md-3 mt-4">
+                <div class="col-md-4 mt-4">
+                        
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <a href="villa.php"><img src="images/image3.jpg" class="card-img-top" alt="..."></a>
 
-                        <div class="card mx-auto" style="width: 18rem;">
-                            <img src="images/image3.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">                                    
-                                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
-                                    <h5 class="card-title text text-center">Card title</h5>
-                                </div>
+                        <div class="card-body">                                    
+                            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
+                            <h5 class="card-title text text-center">Nos Villas</h5>
                         </div>
+
+                    </div>
+                        
                      
                 </div>
 
-                <div class="col-md-3 mt-4">
+                <div class="col-md-4 mt-4">
 
                     <div class="card mx-auto" style="width: 18rem;">
-                            <img src="images/image2.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    
-                                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
-                                    <h5 class="card-title text text-center">Card title</h5>
-                                </div>
-                    </div>
-
-                    
-                </div>
-                <div class="col-md-3 mt-4">
-
-                    <div class="card mx-auto" style="width: 18rem;">
-                            <img src="images/image_pause.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    
-                                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
-                                    <h5 class="card-title text text-center">Card title</h5>
-                                </div>
+                        <a href="campings.php"><img src="images/image_pause.jpg" class="card-img-top" alt="..."></a> 
+                            <div class="card-body">
+                                
+                                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
+                                <h5 class="card-title text text-center">Nos Campings</h5>
+                            </div>
                     </div>
 
                     
                 </div>
 
             </div><!-- fin des cards -->
+            <hr>
             
 
         </main> <!--Fin du Main-->

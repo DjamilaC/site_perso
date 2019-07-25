@@ -5,7 +5,7 @@ body{
   margin: 0 auto;
 }
 
-.logo{
+#logo{
   margin-left: 1vw;
 }
 .image_header{
@@ -33,6 +33,19 @@ body{
   border-inline-start: solid rgb(170, 167, 167) 1px;    
 }  */
 
+.fa-arrow-circle-up{
+  color: hsl(50, 94%, 25%);
+  
+   
+}
+.btn-ancre{
+  box-shadow: 2px 2px 5px darkslategray;
+  font-size: 200%;
+  position: fixed; 
+  left: 115rem;
+  top: 40rem;
+}
+
 footer{
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);    
@@ -42,6 +55,11 @@ footer{
 .card{
   box-shadow: 2px 2px 5px darkslategray;
   border-radius: 5%; 
+}
+.card-title{
+  color: hsl(50, 94%, 25%);
+  text-shadow: 2px 2px 5px darkslategray;
+  font-weight: bold; 
 }
 
 .card:hover{
@@ -74,6 +92,8 @@ footer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  
+
 }
 .tile-wrap {
   display: inline-block;
@@ -133,8 +153,7 @@ footer{
   background-size: cover;
   background-position: center center;
   height: 90vh;
-  
-      
+        
 }
 .btn{
   background: rgb(255, 145, 0);
@@ -164,6 +183,15 @@ h1{
 }
 .label{
   font-weight: bold;
+}
+.reservation{
+  border-radius: 2%;
+  box-shadow: 2px 2px 5px grey;
+  margin-left: 40%;
+}
+.reservation .btn:hover{
+background: grey;
+margin-bottom: 2rem;
 }
 
 

@@ -1,5 +1,9 @@
+<section>
+<a href="#logo"> <button class="btn-ancre" type="button"> <i class="fas fa-arrow-circle-up" aria-hidden="true"></i></button></a>
+</section>
+
 <footer class="col-md-12">
-            <div class="row col-md-12 mt-5 pt-5">
+            <div class="row col-md-12 pt-5">
                 <div class="col-md-3">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit ad! Ullam eveniet est laboriosam.</p> 
                 </div>
@@ -20,8 +24,7 @@
                 <div class="col-md-4 offset-5">
                 <i class="fab fa-facebook-square"></i> &nbsp <i class="fab fa-twitter-square"></i> &nbsp <i class="fab fa-instagram"></i>                     
                 </div>
-            </div>
-        
+            </div>        
         
         </footer>
 

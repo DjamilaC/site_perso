@@ -13,7 +13,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" href="include/css/style.css">
-        <title>Emma Vacances</title>
+        <title>EMMA Vacances</title>
     </head>
 
     <body>
@@ -25,7 +25,8 @@
             <div class="row">
 
                 <div class="col-md-1 bg-light">
-                    <img class="logo" src="images/logo_R1.png" alt="">
+                    <a href="index.php"><img id="logo" src="images/logo_R2.png" alt=""></a>
+                    
                 </div>
 
                         <!-- la barre de navigation -->

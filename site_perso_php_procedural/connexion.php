@@ -28,7 +28,8 @@ require_once("include/header2.php");
  
                      </form>   
             </div>
-        </section>  
+        </section> 
+        <!-- <hr>  -->
     
    
 </div>
