@@ -5,18 +5,20 @@ body{
   margin: 0 auto;
 }
 
+/* le logo */
 #logo{
   margin-left: 1vw;
 }
+
+/* l'image du header */
 .image_header{
   background-size: cover;   
   position: relative;
   padding: 0;
-  box-shadow: 2px 2px 5px;
-  
-  
+  box-shadow: 2px 2px 5px;  
 }
 
+/* la barre de recherche */
 .search{
   position: absolute;
   background: rgba(0, 0, 0, 0.2);         
@@ -35,8 +37,7 @@ body{
 
 .fa-arrow-circle-up{
   color: hsl(50, 94%, 25%);
-  
-   
+     
 }
 .btn-ancre{
   box-shadow: 2px 2px 5px darkslategray;
@@ -152,47 +153,85 @@ footer{
   background: url(../../images/background.jpg);   
   background-size: cover;
   background-position: center center;
-  height: 90vh;
-        
+  height: 90vh;      
 }
+
+/* Bouton d'inscription et de connexion */
+
 .btn{
-  background: rgb(255, 145, 0);
-  border:rgb(172, 99, 5);
+  background: rgb(255, 145, 0) !important;
+  border:rgb(172, 99, 5) !important;
   box-shadow: 2px 2px 5px grey;
   margin-bottom: 3rem; 
 }
+.btn:hover{
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* page inscription */
+
 .inscription{
   background-image: url(../../images/background.jpg);
   background-size: cover;
   background-position: center center;  
-  height: 90vh;
+  
 }
-.form_connexion{
+/* formulaire d'inscription et de connexion */
+
+.form_connexion_inscription{
   border: 1px solid grey;
   background: rgba(0, 0, 0, 0.4);
   box-shadow: 2px 2px 5px grey;
 }
 h1{
   font-style: italic; 
-  color: hsl(51, 100%, 35%);
+  color: hsl(37, 92%, 53%);
   /* font-family: inherit;  */
 }
-.titre-connexion{
-  font-weight: bolder;
-  color: hsl(180, 11%, 95%);
-}
-.label{
-  font-weight: bold;
+
+.map iframe{
+  box-shadow: 2px 2px 5px grey;
+  background-position: center center;
+
 }
 .reservation{
-  border-radius: 2%;
   box-shadow: 2px 2px 5px grey;
-  margin-left: 40%;
+  height: 70%; 
+  /* padding: 2%;
 }
-.reservation .btn:hover{
+.form_reservation{
+  border-radius: 2%;
+  /*     */
+  /* margin-left: 40%; */
+  /* width: 15vw;
+  height: 20vh; */
+
+}
+.form_reservation .btn:hover{
 background: grey;
 margin-bottom: 2rem;
 }
+.fa-suitcase-rolling{
+  font-size: 200%;
+  /* color: grey; */
+}
+.comfort{
+  box-shadow: 2px 2px 5px rgb(190, 181, 181);
+  /* margin-left: 10px; */
+}
+.comfort img{
+  width: 10%;
+  color: rgba(0, 0, 0, 0.1);
+  
+}
+h5{
+  font-weight: bold;
+}
+label{
+  /* font-weight: bold; */
+  color: bisque;
+}
+
 
 
 

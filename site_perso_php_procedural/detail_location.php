@@ -46,7 +46,7 @@ require_once("include/header2.php");
                </div> 
                             <!--Fin du slider-->
                             
-               <div class="col-md-3">
+               <div class="map col-md-3">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2629.976044306682!2d2.400797815921941!3d48.763253779278216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67462be05e0cd%3A0xee10b7d221f3ffec!2s27+Avenue+Gambetta%2C+94600+Choisy-le-Roi!5e0!3m2!1sfr!2sfr!4v1563532149129!5m2!1sfr!2sfr" width="600" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
                </div>
            </div> 
@@ -56,7 +56,7 @@ require_once("include/header2.php");
             <!-- --------------------------------Description de la location------------------------------ -->
 
             <div class="row"> <!--Debut de la row--> 
-                    <section class="col-md-7 detail_location">
+                    <section class="col-md-7 offset-md-1 detail_location">
                         <h4>Description</h4>
                         <hr>
                         
@@ -85,8 +85,9 @@ require_once("include/header2.php");
 
         <!--------------------------------Formulaire de reservation--------------------------------- -->
 
-                    <section class="col-md-4 ml-5 mt-5">
-                            <form method="post" action="" class="reservation">
+                    <section class="col-md-3 ml-3 mt-5 mb-2 reservation">
+                        <h4>Choisissez vos dates</h4>
+                            <form method="post" action="" class="form_reservation mt-4">
 
                                     <div class="form-group ">
                                         <label for="date_debut_vacanc">Date debut de séjour</label>

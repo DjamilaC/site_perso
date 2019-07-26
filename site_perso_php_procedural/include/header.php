@@ -49,7 +49,7 @@
 
                             <a class="nav-item nav-link" href="inscription.php">Inscription</a>
 
-                            <a class="nav-item nav-link" href="connexion.php">Connexion</a>
+                            <a class="nav-item nav-link" href="connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
 
                             <a class="nav-item nav-link" href="panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
                             

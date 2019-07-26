@@ -7,26 +7,37 @@ require_once("include/header.php");
 
         <main>
                         <!-- la partie en dessous de limage du header -->
-            <div class="row">
+            <section class="row container-fluid mx-auto mt-5 mb-5">
 
-                <div class="col-md-3 offset-md-1 mt-5 text text-center">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores aspernatur quo labore! Laborum, perspiciatis alias.</p>
-                </div>
-                <div class="col-md-3 mt-5 text text-center">
+                <div class="col-md-4 comfort">
+                    <p><i class="fas fa-suitcase-rolling"></i></p>
+                    <h5>Vos vacances de rêve commencent ici</h5>    
                     <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores aspernatur quo labore! Laborum, perspiciatis alias.
-                    </p>
-                </div>
-                <div class="col-md-3 mt-5 text text-center">
-                    <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores aspernatur quo labore! Laborum, perspiciatis alias.
+                        
+                        Réservez votre location de vacances et vivez un séjour inoubliable
                     </p>
                 </div>
 
-            </div>
+                <div class="col-md-4 comfort">
+                    <p> <img src="images/comfort.png" alt=""></p>
+                    <h5>Tout le confort d’une maison</h5>
+                    <p>          
+                    Profitez de cuisines complètes, de piscines, de jardins et plus encore
+                    </p>
+                </div>
+
+                <div class="col-md-4 comfort">
+                    <p><img src="images/equipement.png" alt=""></p>
+                    <h5>Bien plus qu’une location de vacances</h5>
+                    <p>
+                    Plus d’espace, d’intimité et tous les équipements dont vous avez besoin
+                    </p>
+                </div>
+
+            </section>
 
                                          <!-- slider -->
-            <div class="container">
+            <div class="row container mx-auto">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade col-md-12 mx-auto" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active col-md-12">
