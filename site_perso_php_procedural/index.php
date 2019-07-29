@@ -5,8 +5,28 @@ require_once("include/header.php");
 ?>
 <!-- Page Content -->
 
+
         <main>
-                        <!-- la partie en dessous de limage du header -->
+            <section>
+                                    <!--Image en dessous de la nav -->
+                <div class="row">
+                    
+                    <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
+
+                    <div class="col-md-6 mt-5 ml-5 search">
+                        <form class="form-inline">
+                            <input class="col-md-3 mt-1 mb-1" type="text" placeholder="rechercher">
+                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
+                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
+
+                        </form>
+                    </div>
+
+                </div>
+        
+            </section>
+
+                        <!-- la partie en dessous de limage -->
             <section class="row container-fluid mx-auto mt-5 mb-5">
 
                 <div class="col-md-4 comfort">

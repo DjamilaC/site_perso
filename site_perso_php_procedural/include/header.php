@@ -39,21 +39,52 @@
                         id="navbarNavAltMarkup">
 
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="index.php"> <i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
-
-                            <a class="nav-item nav-link" href="appartement.php">Nos Appartements</a>
-
-                            <a class="nav-item nav-link" href="villas.php">Nos Villas</a>
-
-                            <a class="nav-item nav-link" href="campings.php">Nos Campings</a>
-
-                            <a class="nav-item nav-link" href="inscription.php">Inscription</a>
-
-                            <a class="nav-item nav-link" href="connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
-
-                            <a class="nav-item nav-link" href="panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
+                        
+                        <?php if(internauteEstConnecte()): // accés membre connecté non ADMIN ?>
                             
-                            <a class="nav-item nav-link" href="contact.php" tabindex="-1"><i class="fas fa-envelope"></i> Nous contacter</a>
+                            <a class="nav-item nav-link active" href="<?= URL ?>index.php"> <i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>appartements.php">Nos Appartements</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>villas.php">Nos Villas</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>campings.php">Nos Campings</a>
+                            
+                            <a class="nav-item nav-link" href="<?= URL ?>connexion.php?action=deconnexion"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
+                            
+                            <a class="nav-item nav-link" href="<?= URL ?>profil.php" tabindex="-1"><i class="fas fa-envelope"></i> Profil</a>
+                                     
+                            <?php else: // accés visiteur non connecté ?>
+
+                                <a class="nav-item nav-link active" href="<?= URL ?>index.php"> <i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>appartements.php">Nos Appartements</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>villas.php">Nos Villas</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>campings.php">Nos Campings</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>inscription.php">Inscription</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+
+                            <a class="nav-item nav-link" href="<?= URL ?>panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
+
+                            <?php endif; ?>
+
+                            <?php if(internauteEstConnecteEstAdmin()): ?>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_location.php">Gestion Boutique</a>
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_reservation.php">Gestion Commande</a>
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_client.php">Gestion Membre </a>         
+                        </div>
+                        </li>
+                        <?php endif; ?>
+
 
                         </div>
 
@@ -66,21 +97,5 @@
                                                              
             </div>
                      
-                            <!--Image du header -->
-            <div class="row">
-                
-                    <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
-
-                    <div class="col-md-6 mt-5 ml-5 search">
-                        <form class="form-inline">
-                            <input class="col-md-3 mt-1 mb-1" type="text" placeholder="rechercher">
-                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
-                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
-
-                        </form>
-                    </div>           
-            </div>
-            
-
-            
+                       
         </header>

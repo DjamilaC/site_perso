@@ -1,7 +1,7 @@
 <?php
 require_once("include/init.php");
 extract($_GET);
-require_once("include/header2.php");
+require_once("include/header.php");
 ?>
 <!-- Page Content -->
 

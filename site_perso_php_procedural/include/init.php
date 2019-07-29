@@ -1,9 +1,11 @@
 <?php
+session_start();
+
 $bdd = new PDO('mysql:host=localhost;dbname=emmavacances', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 // -----------------------SESSION
 
-session_start();
+
 
 //------------------------CHEMIN
 define("RACINE_SITE", $_SERVER['DOCUMENT_ROOT'].'/site_perso/site_perso_php_procedural/');
@@ -13,7 +15,7 @@ define("RACINE_SITE", $_SERVER['DOCUMENT_ROOT'].'/site_perso/site_perso_php_proc
 // Lors de l'enregistrement d'image / photos, nous aurons besoin du chemin physique complet pour enregistrer la photo dans le bon dossier
 // echo RACINE_SITE;
 
-define("URL", "http://localhost/formation/Back/PHPWEBFORCE3/10-site/");
+define("URL", "http://localhost/site_perso/site_perso_php_procedural/");
 // echo URL;
 // cette constante servira entre autre à enregistrer l'URL d'une photo/ image dans la BDD, on ne conserve jamais la photo elle même, ce serait trop lourd pour la BDD
 
