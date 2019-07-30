@@ -1,6 +1,6 @@
 <?php
 require_once("include/init.php");
-if(!internauteEstConnecte())// si l'internaute n'est connecté pas (!) connecté, il n'a rien à faire sur la page profil, on le redirige vers la page connexion 
+if(!internauteEstConnecte())// si l'internaute n'est  pas (!) connecté, il n'a rien à faire sur la page profil, on le redirige vers la page connexion 
 {
     header("Location: connexion.php"); 
 }

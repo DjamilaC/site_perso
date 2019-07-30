@@ -1,7 +1,7 @@
-
 <?php
-require_once("include/header.php");
+
 require_once("include/init.php");
+
 // extract($_GET);
 
 extract($_POST); 
@@ -9,7 +9,7 @@ if(internauteEstConnecte())// si l'internaute est connecté, il n'a rien à fair
 {
     header("Location: profil.php"); 
 }
-echo '<pre>'; print_r($_POST); echo'</pre>';
+// echo '<pre>'; print_r($_POST); echo'</pre>';
 
 if($_POST)
 {
@@ -54,7 +54,7 @@ if($_POST)
       }
      
 }
-
+require_once("include/header.php");
 
 ?>
 <!-- Page Content -->

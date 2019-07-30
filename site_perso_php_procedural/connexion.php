@@ -21,7 +21,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'validate') {
     }
 
     // echo '<pre>'; print_r($_POST); echo'</pre>';
-    if($_POST){
+    if($_POST) {
         // on selectionne tout dans la table membre à condition que la colonne pseudo_email de la BDD soit bien égale au pseudo ou email saisie dans le formulaire
         $verif_pseudo_email = $bdd->prepare("SELECT * FROM client WHERE pseudo = :pseudo OR email = :email") ;
         $verif_pseudo_email->bindValue(':pseudo', $email_pseudo, PDO::PARAM_STR);
@@ -34,7 +34,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'validate') {
         {
             
                 $client = $verif_pseudo_email->fetch(PDO::FETCH_ASSOC);// on recupere les données en BDD de l'internaute qui a saisi le bon pseudo ou le bon email, on va pouvoir comparer les mots de passe.
-                echo '<pre>'; print_r($client); echo'</pre>';
+                // echo '<pre>'; print_r($client); echo'</pre>';
                 // on entre dans le if seulement dans le cas où l'internaute a saisi le bon email/pseudo et le bon mdp
 
                 if($client['mdp'] == $mdp)
@@ -51,17 +51,17 @@ if (isset($_GET['action']) && $_GET['action'] == 'validate') {
                 header("Location: profil.php");
                 
                 }else{
-                    $error .='<div class="col-md-6 offset-md-3 text-center alert alert-danger"> Verifiez le mot de passe!!! </div>';           
-                            
-            }
-        }// fin if verif_pseudo_email
+                    $error .='<div class="col-md-6 offset-md-3 text-center alert alert-danger"> Mot de passe eronné!!! </div>';             
+                }
+                // echo 'pseudo / email valide';
+        } // fin if verif_pseudo_email
+                else// on entre dans le else si l'internaute n'a pas saisi le bon email ou le bon pseudo
+                {
+                    $error .= '<div class="col-md-6 offset-md-3 text-center alert alert-danger"> Le pseudo ou email : <strong>' . $email_pseudo . '</strong> est inconnu dans la base de données !!</div>'; 
+                } 
+    } // fin if $_POST
 
-        else// on entre dans le else si l'internaute n'a pas saisi le bon email ou le bon pseudo
-        {
-            $error .='<div class="col-md-6 offset-md-3 text-center alert alert-danger"> Le pseudo ou email: <strong>' .$email_pseudo . '</strong> </div>';
-        }
-    
-    }
+        
 require_once("include/header.php");
 ?>
 

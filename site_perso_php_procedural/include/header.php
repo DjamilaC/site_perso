@@ -12,7 +12,7 @@
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link rel="stylesheet" href="include/css/style.css">
+        <link rel="stylesheet" href="<?= URL ?>include/css/style.css">
         <title>EMMA Vacances</title>
     </head>
 
@@ -78,9 +78,9 @@
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_location.php">Gestion Boutique</a>
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_reservation.php">Gestion Commande</a>
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_client.php">Gestion Membre </a>         
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_location.php">Gestion Location</a>
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_reservation.php">Gestion Reservation</a>
+                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_client.php">Gestion Client </a>         
                         </div>
                         </li>
                         <?php endif; ?>
