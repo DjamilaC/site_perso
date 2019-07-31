@@ -29,7 +29,7 @@ body{
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
-  top: 14%;
+  top: 16%;
   right: 2%; 
   width: 60%;
   padding: .5rem;        
@@ -46,15 +46,16 @@ body{
 .btn-ancre{
   box-shadow: 2px 2px 5px darkslategray;
   font-size: 200%;
-  position: fixed; 
+  position: fixed;
   left: 115rem;
   top: 40rem;
-}
+ }
 
 footer{
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);    
-  padding: 0;    
+  padding: 0; 
+  position: relative;   
 }
 
 .card{
@@ -231,9 +232,12 @@ margin-bottom: 2rem;
 h5{
   font-weight: bold;
 }
-label{
+.inscription .connexion label{
   /* font-weight: bold; */
   color: bisque;
+}
+.form1 label{
+color: hsl(37, 92%, 53%); 
 }
 
 

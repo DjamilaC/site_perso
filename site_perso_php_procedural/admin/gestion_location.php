@@ -36,10 +36,10 @@ if($_POST)
         $nom_photo = $reference . '-' . $_FILES['photo']['name']; // on redéfinit le nom de la photo en concaténant la référence saisi dans le formulaire avec le nom de la photo
         echo $nom_photo . '<br>';
 
-        $photo_bdd = URL . "photo/$nom_photo"; // on définit l'URL de la photo, c'est ce que l'on conservera en BDD
+        $photo_bdd = URL . "../images/$nom_photo"; // on définit l'URL de la photo, c'est ce que l'on conservera en BDD
         echo $photo_bdd . '<br>';
 
-        $photo_dossier = RACINE_SITE . "photo/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
+        $photo_dossier = RACINE_SITE . "../images/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
         echo $photo_dossier . '<br>';
 
         copy($_FILES['photo']['tmp_name'], $photo_dossier); // copy() est une fonction prédéfinie qui permet de copier la photo dans le dossier photo. arguments: copy(nom_temporaire_photo, chemin de destination)
@@ -60,7 +60,7 @@ if($_POST)
     else
     {
             // La requete update permettant de modifier une location dans la table 'locations'.
-      $location_insert = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type= :type, prix= :prix, etat = :etat, photo= :photo WHERE id_location = $id_location");
+      $data_insert = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
 
       $_GET['action'] = 'affichage';
 
@@ -73,12 +73,12 @@ if($_POST)
         { 
             if($key != 'photo_actuelle')
             {
-             $location_insert->bindValue(":$key", $value, PDO::PARAM_STR);  
+             $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);  
             }
               
-        }
-        $location_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);   
-        $location_insert->execute();
+        }        
+        $data_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);   
+        $data_insert->execute();
 
     }
 require_once("../include/header.php");
@@ -94,7 +94,7 @@ require_once("../include/header.php");
   <li class="list-group-item"><a href="?action=affichage" class="alert-link text-dark">AFFICHAGE LOCATIONS</a></li>
   <li class="list-group-item"><a href="?action=ajout" class="alert-link text-dark">AJOUT LOCATION</a></li>
  
-</ul>
+</ul> <hr>
 <!-- FIN LIENS LOCATIONS -->
 
 <!-- AFFICHAGE LOCATIONS -->
@@ -103,33 +103,39 @@ require_once("../include/header.php");
  
 <?php if(isset($_GET['action']) && $_GET['action'] == 'affichage'): ?>
 <h1 class="display-4 text-center"> Liste des locations</h1>
-<?= $validate ?>
-  <?php $resultat = $bdd->query("SELECT * FROM locations"); ?>
-  <?php $location = $resultat->fetchAll(PDO::FETCH_ASSOC);?>
+
+<?php echo $validate; 
+  
+  $resultat = $bdd->query("SELECT * FROM locations");
+  $location = $resultat->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+  
     <!-- <?php echo '<pre>'; print_r($location); echo'</pre>'; ?> -->
 
    
 <table class="table table-bordered text-center">
 <tr>
+  <?php foreach($location[0] as $key => $value): ?>
+    <th><?= strtoupper($key) ?></th>
+  <?php endforeach; ?>
     <th>MODIFIER</th>
     <th>SUPPRIMER</th>
-
-  <?php foreach ($location[0] as $key=> $value):?>
-
-  <th> <?= strtoupper($key) ?></th> 
-  <?php endforeach; ?>
-    
   </tr>
 
-  <?php foreach($location as $key=> $tab):?>
-  <tr>
-    <?php foreach($tab as $key2 => $value):?>
-        <?php if($key2 != 'photo'): ?>
-          <td><?= $value ?></td>
-        <?php else: ?> 
-          <td><img src="<?= $value ?>" alt="<?= $tab['titre']?>" class="card-img-top"></td>  
+  <?php foreach($location as $key => $tab): ?>
+    <tr>
+    <?php foreach($tab as $key2 => $value): ?>
+
+        <?php if($key2 == 'photo'): ?>
+            <td><img src="../images/<?= $value ?>" alt="<?= $tab['titre'] ?>" class="card-img-top" height="80px"></td>
+        <?php else: ?>
+
+            <td><?= $value ?></td>
         <?php endif; ?>
-    <?php endforeach; ?>
+
+    <?php endforeach; ?> 
+
     <td><a href="?action=modification&id_location=<?= $tab['id_location'] ?>" class="text-dark"><i class="fas fa-edit"></i></a></td>
     <td><a href="?action=suppression&id_location=<?= $tab['id_location'] ?>" class="text-danger" onclick="return(confirm('En êtes vous certain?'))"><i class="fas fa-trash-alt"></i></a></td>
     
@@ -173,6 +179,11 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
  <div class="form-group">
     <label for="reference">Référence</label>
     <input type="text" class="form-control" id="reference"  placeholder="Enter reference" name="reference" value="<?= $reference?>">    
+  </div>
+
+  <div class="form-group">
+    <label for="titre">Titre</label>
+    <input type="text" class="form-control" id="titre" aria-describedby="" placeholder="Enter un titre" name="titre" value="<?= $titre ?>">    
   </div>
 
   <div class="form-group">
@@ -220,7 +231,7 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
     <label for="etat">Etat</label>
     <select class="form-control" id="etat" name="etat" value="">
       <option value="disponible" <?php if($etat == 'disponible') echo 'selected'; ?>>Disponible</option>
-      <option value="loué" <?php if($public == 'loué') echo 'selected'; ?>>Loué</option>
+      <option value="pris" <?php if($etat == 'pris') echo 'selected'; ?>>Non disponible</option>
             
     </select>        
   </div>

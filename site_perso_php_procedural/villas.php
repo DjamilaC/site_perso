@@ -10,34 +10,31 @@ extract($_GET);
     // echo '<pre>'; print_r($location); echo '</pre>';
 ?>
 
+  <h1 class="text text-center mt-3 mb-3">Bienvenue dans nos villas</h1>
+  
+  <section>
+        <?php 
+            while ($location = $resultat->fetch(PDO::FETCH_ASSOC)) : ?>        
 
-    <?php 
-    while ($location = $resultat->fetch(PDO::FETCH_ASSOC)) : ?>   
-   
+                <div class="container-fluid card-tile">
 
-    
-
-        <h1 class="text text-center mt-3 mb-3">Bienvenue dans nos villas</h1>
-
-        <div class="container-fluid card-tile">
-
-        
-            <div class="tile-wrap">
-                <a href="detail_location.php?id=<?= $location['id_location'] ?>">
-                    <img src="images/<?= $location['photo'] ?>" alt="<?= $location['titre'] ?>" class="tile-image"/>
-                    <div class="tile-text">
-                        <h2 class="tile-title"><?= $location['description'] ?></h2>
-                        <p class="tile-description"><?= $location['titre'] . '<br>' . $location['adresse'] . '<br>' . $location['etat'] ?></p>
+                
+                    <div class="tile-wrap">
+                        <a href="detail_location.php?id=<?= $location['id_location'] ?>">
+                            <img src="images/<?= $location['photo'] ?>" alt="<?= $location['titre'] ?>" class="tile-image"/>
+                            <div class="tile-text">
+                                <h2 class="tile-title"><?= $location['description'] ?></h2>
+                                <p class="tile-description"><?= $location['titre'] . '<br>' . $location['adresse'] . '<br>' . $location['etat'] ?></p>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                <?php endwhile; ?>   
             </div>
-          <?php endwhile; ?>   
-        </div>
        
+
+  </section>
+
+   <?php 
     
-
-
-
-<?php 
 require_once("include/footer.php");
 ?>
