@@ -25,7 +25,7 @@
             <div class="row">
 
                 <div class="col-md-1 bg-light">
-                <a href="index.php"><img id="logo" src="images/logo_R2.png" alt=""></a>
+                <a href="index.php"><img id="logo" src="<?= URL ?>images/logo_R2.png" alt=""></a>
                 </div>
 
                         <!-- la barre de navigation -->

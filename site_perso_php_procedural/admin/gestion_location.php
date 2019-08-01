@@ -13,13 +13,14 @@ if(!internauteEstConnecteEstAdmin())
 
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
-  $location_delete = $bdd->prepare("DELETE FROM location WHERE id_location = :id_location");
+  $location_delete = $bdd->prepare("DELETE FROM locations WHERE id_location = :id_location");
   $location_delete->bindValue(':id_location', $id_location, PDO::PARAM_STR);
   // Exo: requete de suppression location
   // echo 'suppression location';
   $location_delete->execute();
+
   $_GET['action'] = 'affichage';// on redirige vers l'affichage des locations
-  $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$id_location</strong>a bien été supprimé !! </div>";
+  $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_location </strong>a bien été supprimé !! </div>";
 }
 
                         //-----------ENREGISTREMENT PRODUIT-------------------------
@@ -42,7 +43,7 @@ if($_POST)
         $photo_dossier = RACINE_SITE . "../images/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
         echo $photo_dossier . '<br>';
 
-        copy($_FILES['photo']['tmp_name'], $photo_dossier); // copy() est une fonction prédéfinie qui permet de copier la photo dans le dossier photo. arguments: copy(nom_temporaire_photo, chemin de destination)
+        //copy($_FILES['photo']['tmp_name'], $photo_dossier); // copy() est une fonction prédéfinie qui permet de copier la photo dans le dossier photo. arguments: copy(nom_temporaire_photo, chemin de destination)
 
      
     }
@@ -61,26 +62,27 @@ if($_POST)
     {
             // La requete update permettant de modifier une location dans la table 'locations'.
       $data_insert = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
+  
 
+      foreach($_POST as $key =>$value)
+          { 
+              if($key != 'photo_actuelle')
+              {
+               $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);  
+              }
+                
+          }        
+          $data_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);   
+          $data_insert->execute();
+  
+      }
       $_GET['action'] = 'affichage';
 
-      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong>$id_location</strong>a bien été modifié !! </div>";
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong> $id_location </strong>a bien été modifié !! </div>";
 
 
     }
     
-    foreach($_POST as $key =>$value)
-        { 
-            if($key != 'photo_actuelle')
-            {
-             $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);  
-            }
-              
-        }        
-        $data_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);   
-        $data_insert->execute();
-
-    }
 require_once("../include/header.php");
 
 // echo '<pre>'; print_r($_POST); echo'</pre>';
@@ -171,8 +173,12 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
 
 ?>
 
+
+
+
         <!-- Le formulaire permettant d'inserer une location dans la table 'locations (sauf le champs: id_location' -->
- 
+<section class="formulaire_ajout_location mx-auto">
+
  <form class="col-md-6 offset-md-4 form1" method="post" action="" enctype="multipart/form-data"> 
  <!-- enctype: obligatoire en PHP pour recolter les informations d'1 fichier uploadé -->
 
@@ -245,15 +251,12 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
         <em>Vous pouvez uploader une nouvelle photo si vous souhaitez la changer</em><br>
         <img src="<?= $photo ?>" alt="<? $titre ?>" class="card-img-top">
         <?php endif; ?>
-        <input type="hidden" id="photo_actuelle" name="photo_actuelle" value="<?= $photo ?>">
-        
-        
+        <input type="hidden" id="photo_actuelle" name="photo_actuelle" value="<?= $photo ?>">    
   </div>
     <button type="submit" class="btn btn-danger col-md-4 offset-md-4"><?= $action ?></button>
-</form
- 
+</form>
 <?php endif; ?>
-
+</section>
 
 
 <?php

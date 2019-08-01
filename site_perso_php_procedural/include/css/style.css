@@ -5,6 +5,12 @@ body{
   margin: 0 auto;
 }
 
+#container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 /* le logo */
 #logo{
   margin-left: 1vw;
@@ -191,6 +197,7 @@ footer{
 h1{
   font-style: italic; 
   color: hsl(37, 92%, 53%);
+  text-shadow: 2px 2px 5px rgb(27, 27, 27);
   /* font-family: inherit;  */
 }
 
@@ -236,8 +243,16 @@ h5{
   /* font-weight: bold; */
   color: bisque;
 }
+
 .form1 label{
-color: hsl(37, 92%, 53%); 
+color: hsl(37, 92%, 53%);
+
+}
+table{
+  background-color: rgb(219, 201, 179); 
+}
+.formulaire_ajout_location{
+  background-color: bisque;
 }
 
 

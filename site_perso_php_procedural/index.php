@@ -88,7 +88,7 @@ require_once("include/header.php");
                 <div class="col-md-4 mt-4">
 
                     <div class="card mx-auto" style="width: 18rem;">
-                        <a href="appartement.php"><img src="images/image4.jpg" class="card-img-top" alt="..."></a> 
+                        <a href="<?= URL ?>appartements.php"><img src="images/image4.jpg" class="card-img-top" alt="..."></a> 
                         <div class="card-body">
                             
                             <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
@@ -101,7 +101,7 @@ require_once("include/header.php");
                 <div class="col-md-4 mt-4">
                         
                     <div class="card mx-auto" style="width: 18rem;">
-                        <a href="villa.php"><img src="images/image3.jpg" class="card-img-top" alt="..."></a>
+                        <a href="<?= URL ?>villas.php"><img src="images/image3.jpg" class="card-img-top" alt="..."></a>
 
                         <div class="card-body">                                    
                             <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
@@ -116,7 +116,7 @@ require_once("include/header.php");
                 <div class="col-md-4 mt-4">
 
                     <div class="card mx-auto" style="width: 18rem;">
-                        <a href="campings.php"><img src="images/image_pause.jpg" class="card-img-top" alt="..."></a> 
+                        <a href="<?= URL ?>campings.php"><img src="images/image_pause.jpg" class="card-img-top" alt="..."></a> 
                             <div class="card-body">
                                 
                                 <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
