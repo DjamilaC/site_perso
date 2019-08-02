@@ -9,7 +9,7 @@ if(!internauteEstConnecteEstAdmin())
 {
     header("Location:" . URL . "connexion.php"); 
 }
-                        // ---------------SUPPRESSION DE PRODUIT-----------------------
+        // ---------------SUPPRESSION DE LOCATION-----------------
 
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
@@ -21,7 +21,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
   $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_client </strong>a bien été supprimé !! </div>";
 }
 
-                        //-----------ENREGISTREMENT PRODUIT-------------------------
+           //-----------ENREGISTREMENT CLIENT-------------------------
 
             // la requete d'insertion permettant d'inserer un client dans la table 'client' (requête préparée).
 
@@ -30,17 +30,21 @@ if($_POST)
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
       $client_insert = $bdd->prepare("INSERT into client (pseudo, mdp, nom_client, prenom_client, email, civilite, ville, code_postal, adresse, num_telephone) VALUES (:pseudo, :mdp, :nom_client, :prenom_client, :email, :civilite , :ville, :code_postal, :adresse, :num_telephone)");
-
+      foreach($_POST as $key => $value)
+         {            
+            $client_insert->bindValue(":$key", $value, PDO::PARAM_STR); 
+         }             
+             
+    }
+    
       $_GET['action'] = 'affichage';
 
-      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$pseudo</strong> a bien été ajouté !! </div>";
-
-    }
-    else
-    {
+      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$pseudo</strong> a bien été ajouté !! </div>";   
+    
             // La requete update permettant de modifier un client dans la table 'client'.
-
-      $data_insert = $bdd->prepare("UPDATE client SET pseudo = :pseudo, mdp= :mdp, nom_client = :nom_client, prenom_client = :prenom_client, email = :email, civilite = :civilite, ville = :ville, code_postal = :code_postal, adresse = :adresse, num_telephone = :num_telephone WHERE id_client = $id_client");
+      if(isset($_GET['action']) && $_GET['action'] == 'modification')
+        {
+              $data_insert = $bdd->prepare("UPDATE client SET pseudo = :pseudo, mdp= :mdp, nom_client = :nom_client, prenom_client = :prenom_client, email = :email, civilite = :civilite, ville = :ville, code_postal = :code_postal, adresse = :adresse, num_telephone = :num_telephone WHERE id_client = $id_client");
   
 
       foreach($_POST as $key =>$value)
@@ -48,12 +52,13 @@ if($_POST)
             $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);
             }            
           $data_insert->execute();
-  
-      }
+        }      
+          
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'> la location a bien été modifié !! </div>";   
+      
       $_GET['action'] = 'affichage';
-
-      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'> la location <strong> $id_client </strong>a bien été modifié !! </div>";    
-}
+  
+} // Fin ($_POST)
     
 require_once("../include/header.php");
 
@@ -63,8 +68,9 @@ require_once("../include/header.php");
 ?>
 
 <!-- LIEN LOCATIONS -->
-<ul class="col-md-4 offset-md-4 list-group mt-4 text-center">
-  <li class="list-group-item bg-dark text-center text-white">ADMINISTRATAION</li>
+<hr>
+<ul class="col-md-4 offset-md-4 list-group mt-4 text-center admin">
+  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATION</li>
   <li class="list-group-item"><a href="?action=affichage" class="alert-link text-dark">AFFICHAGE CLIENTS</a></li>
   <li class="list-group-item"><a href="?action=ajout" class="alert-link text-dark">AJOUT CLIENT</a></li>
  
@@ -117,15 +123,15 @@ require_once("../include/header.php");
 <!-- FIN AFFICHAGE LOCATIONS -->
 <?php if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == 'modification')): ?>
    
-<h1 class="col-md-6 offset-md-4 text-center" > <?= $action ?> d'un client</h1>
+<h1 class="col-md-6 offset-md-3 text-center" > <?= $action ?> d'un client</h1>
 <?php
 if(isset($_GET['id_location']))
 {
   $resultat = $bdd->prepare("SELECT * FROM client WHERE  id_client = :id_client");
   $resultat->bindValue(':id_client', $id_client, PDO::PARAM_INT);
   $resultat->execute();
-  $location_actuelle = $resultat->fetch(PDO::FETCH_ASSOC);
-  echo '<pre>'; print_r($location_actuelle); echo'</pre>';
+  $client_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
+  echo '<pre>'; print_r($client_actuel); echo'</pre>';
 }
 $pseudo = (isset($client_actuel['pseudo']))? $client_actuel['pseudo'] : '';
 $mdp = (isset($client_actuel['mdp']))? $client_actuel['mdp'] : '';
@@ -145,7 +151,7 @@ $statut = (isset($client_actuel['statut']))? $client_actuel['statut'] : '';
         <!-- Le formulaire permettant d'inserer un client dans la table 'client (sauf le champs: id_client' -->
 <section class="formulaire_ajout_location mx-auto">
 
- <form class="col-md-6 offset-md-4 form1" method="post" action="" enctype="multipart/form-data"> 
+ <form class="col-md-6 offset-md-3 form1 pt-4" method="post" action="" enctype="multipart/form-data"> 
  <!-- enctype: obligatoire en PHP pour recolter les informations d'1 fichier uploadé -->
 
  <div class="form-group">
@@ -155,7 +161,7 @@ $statut = (isset($client_actuel['statut']))? $client_actuel['statut'] : '';
 
   <div class="form-group">
         <label for="mdp">Mot de passe</label>
-        <input type="password" class="form-control" id="mdp" aria-describedby="" placeholder="Enter un mot de passe" name="mdp" value="<?= $mdp ?>">    
+        <input type="text" class="form-control" id="mdp" aria-describedby="" placeholder="Enter un mot de passe" name="mdp" value="<?= $mdp ?>">    
   </div>
     
     <div class="form-group">
@@ -168,11 +174,16 @@ $statut = (isset($client_actuel['statut']))? $client_actuel['statut'] : '';
             <input type="text" class="form-control" id="prenom_client" aria-describedby="" placeholder="enter prenom" name="prenom_client" value="<?= $prenom_client ?>">    
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" aria-describedby="" placeholder="Saisir un email" name="email" value="<?= $email ?>">    
+      </div>
+
+    <div class="form-group">
                 <label for="civilite">Civilite</label>
                 <select class="form-control" id="civilite" name="civilite" value="">                    
                     <option value="f"<?php if($civilite == 'f') echo 'selected'; ?>>Feminin</option>
-                    <option value="m" <?php if($type == 'm') echo 'selected'; ?>>Masculin</option>                    
+                    <option value="m" <?php if($civilite == 'h') echo 'selected'; ?>>Masculin</option>                    
                 </select>              
     </div>
 
@@ -192,12 +203,12 @@ $statut = (isset($client_actuel['statut']))? $client_actuel['statut'] : '';
         <input type="text" class="form-control" id="code_postal" aria-describedby="" placeholder="enter code postal" name="code_postal" value="<?= $code_postal ?>">
     </div>       
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
             <label for="num_telephone">Téléphone</label>
             <input type="text" class="form-control" id="num_telephone" aria-describedby="" placeholder="Enter num_telephone" name="num_telephone" value="<?= $num_telephone ?>">   
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group">
             <label for="statut">Statut</label>
             <input type="text" class="form-control" id="statut" aria-describedby="" placeholder="Enter statut" name="statut" value="<?= $statut ?>">   
     </div>

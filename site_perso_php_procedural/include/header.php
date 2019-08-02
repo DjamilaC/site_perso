@@ -77,10 +77,10 @@
                             <?php if(internauteEstConnecteEstAdmin()): ?>
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_location.php">Gestion Location</a>
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_reservation.php">Gestion Reservation</a>
-                            <a class="dropdown-item" href="<?= URL ?>admin/gestion_client.php">Gestion Client </a>         
+                            <div class="dropdown-menu bg-secondary" aria-labelledby="dropdown04">
+                            <a class="dropdown-item text-light" href="<?= URL ?>admin/gestion_location.php">Gestion Location</a>
+                            <a class="dropdown-item text-light" href="<?= URL ?>admin/gestion_reservation.php">Gestion Reservation</a>
+                            <a class="dropdown-item text-light" href="<?= URL ?>admin/gestion_client.php">Gestion Client </a>         
                         </div>
                         </li>
                         <?php endif; ?>

@@ -9,14 +9,13 @@ if(!internauteEstConnecteEstAdmin())
 {
     header("Location:" . URL . "connexion.php"); 
 }
-                        // ---------------SUPPRESSION DE PRODUIT-----------------------
+          // ---------------SUPPRESSION DE LOCATION-----------------------
 
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
   $location_delete = $bdd->prepare("DELETE FROM locations WHERE id_location = :id_location");
   $location_delete->bindValue(':id_location', $id_location, PDO::PARAM_STR);
-  // Exo: requete de suppression location
-  // echo 'suppression location';
+  
   $location_delete->execute();
 
   $_GET['action'] = 'affichage';// on redirige vers l'affichage des locations
@@ -40,10 +39,10 @@ if($_POST)
         $photo_bdd = URL . "../images/$nom_photo"; // on définit l'URL de la photo, c'est ce que l'on conservera en BDD
         echo $photo_bdd . '<br>';
 
-        $photo_dossier = RACINE_SITE . "../images/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
+        $photo_dossier = RACINE_SITE . "images/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
         echo $photo_dossier . '<br>';
 
-        //copy($_FILES['photo']['tmp_name'], $photo_dossier); // copy() est une fonction prédéfinie qui permet de copier la photo dans le dossier photo. arguments: copy(nom_temporaire_photo, chemin de destination)
+        copy($_FILES['photo']['tmp_name'], $photo_dossier); // copy() est une fonction prédéfinie qui permet de copier la photo dans le dossier photo. arguments: copy(nom_temporaire_photo, chemin de destination)
 
      
     }
@@ -53,32 +52,47 @@ if($_POST)
     {
       $location_insert = $bdd->prepare("INSERT into locations(reference, titre, adresse, ville, code_postal, description, type, prix, etat, photo) VALUES(:reference, :titre, :adresse, :ville, :code_postal, :description, :type, :prix, :etat, :photo)");
 
+          $location_insert->bindValue(":reference", $reference, PDO::PARAM_STR);
+          $location_insert->bindValue(":titre", $titre, PDO::PARAM_STR);
+          $location_insert->bindValue(":adresse", $adresse, PDO::PARAM_STR);
+          $location_insert->bindValue(":ville", $ville, PDO::PARAM_STR);
+          $location_insert->bindValue(":code_postal", $code_postal, PDO::PARAM_STR);
+          $location_insert->bindValue(":description", $description, PDO::PARAM_STR);
+          $location_insert->bindValue(":type", $type, PDO::PARAM_STR);
+          $location_insert->bindValue(":prix", $prix, PDO::PARAM_STR);
+          $location_insert->bindValue(":etat", $etat, PDO::PARAM_STR);
+          $location_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);
+          
+
+
       $_GET['action'] = 'affichage';
 
-      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$reference</strong>a bien été ajouté !! </div>";
+      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong></strong>a bien été ajouté !! </div>";
 
     }
     else
     {
             // La requete update permettant de modifier une location dans la table 'locations'.
-      $data_insert = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
+      $data_update = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
   
 
       foreach($_POST as $key =>$value)
           { 
               if($key != 'photo_actuelle')
               {
-               $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);  
+               $data_update->bindValue(":$key", $value, PDO::PARAM_STR);  
               }
                 
-          }        
-          $data_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);   
-          $data_insert->execute();
+          }
+                  
+          $data_update->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);
+          
+          $data_update->execute();
   
       }
       $_GET['action'] = 'affichage';
 
-      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong> $id_location </strong>a bien été modifié !! </div>";
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong> </strong>a bien été modifié !! </div>";
 
 
     }
@@ -91,8 +105,10 @@ require_once("../include/header.php");
 ?>
 
 <!-- LIEN LOCATIONS -->
-<ul class="col-md-4 offset-md-4 list-group mt-4 text-center">
-  <li class="list-group-item bg-dark text-center text-white">ADMINISTRATAION</li>
+
+<hr>
+<ul class="col-md-4 offset-md-4 list-group mt-4 text-center admin">
+  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATAION</li>
   <li class="list-group-item"><a href="?action=affichage" class="alert-link text-dark">AFFICHAGE LOCATIONS</a></li>
   <li class="list-group-item"><a href="?action=ajout" class="alert-link text-dark">AJOUT LOCATION</a></li>
  
@@ -150,7 +166,7 @@ require_once("../include/header.php");
 <!-- FIN AFFICHAGE LOCATIONS -->
 <?php if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == 'modification')): ?>
    
-<h1 class="col-md-6 offset-md-4 text-center" > <?= $action ?> d'une location</h1>
+<h1 class="col-md-6 offset-md-3 text-center" > <?= $action ?> d'une location</h1>
 <?php
 if(isset($_GET['id_location']))
 {
@@ -161,7 +177,7 @@ if(isset($_GET['id_location']))
   echo '<pre>'; print_r($location_actuelle); echo'</pre>';
 }
 $reference = (isset($location_actuelle['reference']))? $location_actuelle['reference'] : '';
-$titre = (isset($location_actuel['titre']))? $location_actuelle['titre'] : '';
+$titre = (isset($location_actuelle['titre']))? $location_actuelle['titre'] : '';
 $adresse = (isset($location_actuelle['adresse']))? $location_actuelle['adresse'] : '';
 $ville = (isset($location_actuelle['ville']))? $location_actuelle['ville'] : '';
 $code_postal = (isset($location_actuelle['code_postal']))? $location_actuelle['code_postal'] : '';
@@ -179,7 +195,7 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
         <!-- Le formulaire permettant d'inserer une location dans la table 'locations (sauf le champs: id_location' -->
 <section class="formulaire_ajout_location mx-auto">
 
- <form class="col-md-6 offset-md-4 form1" method="post" action="" enctype="multipart/form-data"> 
+ <form class="col-md-6 offset-md-3 form1 pt-4" method="post" action="" enctype="multipart/form-data"> 
  <!-- enctype: obligatoire en PHP pour recolter les informations d'1 fichier uploadé -->
 
  <div class="form-group">

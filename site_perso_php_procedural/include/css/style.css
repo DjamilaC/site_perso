@@ -54,7 +54,7 @@ body{
   font-size: 200%;
   position: fixed;
   left: 115rem;
-  top: 40rem;
+  top: 43rem;
  }
 
 footer{
@@ -196,7 +196,7 @@ footer{
 }
 h1{
   font-style: italic; 
-  color: hsl(37, 92%, 53%);
+  color: hsl(37, 61%, 43%);
   text-shadow: 2px 2px 5px rgb(27, 27, 27);
   /* font-family: inherit;  */
 }
@@ -245,14 +245,18 @@ h5{
 }
 
 .form1 label{
-color: hsl(37, 92%, 53%);
+color: hsl(37, 95%, 22%);
+font-weight: bold;
 
 }
 table{
   background-color: rgb(219, 201, 179); 
 }
 .formulaire_ajout_location{
-  background-color: bisque;
+  background-color: rgb(194, 170, 140);
+}
+.admin{
+  margin-top: 5rem !important;
 }
 
 
