@@ -16,8 +16,9 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
   $client_delete = $bdd->prepare("DELETE FROM client WHERE id_client = :id_client");
   $client_delete->bindValue(':id_client', $id_client, PDO::PARAM_STR);
   $client_delete->execute();
+  
 
-  $_GET['action'] = 'affichage';// on redirige vers l'affichage des locations
+  $_GET['action'] = 'affichage';// on redirige vers l'affichage des clients
   $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_client </strong>a bien été supprimé !! </div>";
 }
 
@@ -125,13 +126,13 @@ require_once("../include/header.php");
    
 <h1 class="col-md-6 offset-md-3 text-center" > <?= $action ?> d'un client</h1>
 <?php
-if(isset($_GET['id_location']))
+if(isset($_GET['id_client']))
 {
   $resultat = $bdd->prepare("SELECT * FROM client WHERE  id_client = :id_client");
   $resultat->bindValue(':id_client', $id_client, PDO::PARAM_INT);
   $resultat->execute();
   $client_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
-  echo '<pre>'; print_r($client_actuel); echo'</pre>';
+  // echo '<pre>'; print_r($client_actuel); echo'</pre>';
 }
 $pseudo = (isset($client_actuel['pseudo']))? $client_actuel['pseudo'] : '';
 $mdp = (isset($client_actuel['mdp']))? $client_actuel['mdp'] : '';

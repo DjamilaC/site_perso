@@ -50,37 +50,37 @@ if($_POST)
 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
-      $location_insert = $bdd->prepare("INSERT into locations(reference, titre, adresse, ville, code_postal, description, type, prix, etat, photo) VALUES(:reference, :titre, :adresse, :ville, :code_postal, :description, :type, :prix, :etat, :photo)");
+      $location_insert = $bdd->prepare("INSERT INTO locations (reference, titre, adresse, ville, code_postal, loc_description, loc_type, prix, etat, photo) VALUES(:reference, :titre, :adresse, :ville, :code_postal, :loc_description, :loc_type, :prix, :etat, :photo)");
 
-          $location_insert->bindValue(":reference", $reference, PDO::PARAM_STR);
+          $location_insert->bindValue(":reference", $reference, PDO::PARAM_INT);
           $location_insert->bindValue(":titre", $titre, PDO::PARAM_STR);
           $location_insert->bindValue(":adresse", $adresse, PDO::PARAM_STR);
           $location_insert->bindValue(":ville", $ville, PDO::PARAM_STR);
-          $location_insert->bindValue(":code_postal", $code_postal, PDO::PARAM_STR);
-          $location_insert->bindValue(":description", $description, PDO::PARAM_STR);
-          $location_insert->bindValue(":type", $type, PDO::PARAM_STR);
-          $location_insert->bindValue(":prix", $prix, PDO::PARAM_STR);
+          $location_insert->bindValue(":code_postal", $code_postal, PDO::PARAM_INT);
+          $location_insert->bindValue(":loc_description", $loc_description, PDO::PARAM_STR);
+          $location_insert->bindValue(":loc_type", $loc_type, PDO::PARAM_STR);
+          $location_insert->bindValue(":prix", $prix, PDO::PARAM_INT);
           $location_insert->bindValue(":etat", $etat, PDO::PARAM_STR);
-          $location_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);
-          
+          $location_insert->bindValue(":photo", $photo_bdd, PDO::PARAM_STR);        
 
-
-      $_GET['action'] = 'affichage';
+      
+          $location_insert->execute();
+          $_GET['action'] = 'affichage';
 
       $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong></strong>a bien été ajouté !! </div>";
-
     }
     else
     {
             // La requete update permettant de modifier une location dans la table 'locations'.
-      $data_update = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
+
+            $data_update = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = id_location");
   
 
       foreach($_POST as $key =>$value)
           { 
               if($key != 'photo_actuelle')
               {
-               $data_update->bindValue(":$key", $value, PDO::PARAM_STR);  
+                $data_update->bindValue(":$key", $value, PDO::PARAM_STR);  
               }
                 
           }
@@ -95,7 +95,7 @@ if($_POST)
       $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong> </strong>a bien été modifié !! </div>";
 
 
-    }
+  }
     
 require_once("../include/header.php");
 
@@ -108,7 +108,7 @@ require_once("../include/header.php");
 
 <hr>
 <ul class="col-md-4 offset-md-4 list-group mt-4 text-center admin">
-  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATAION</li>
+  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATION</li>
   <li class="list-group-item"><a href="?action=affichage" class="alert-link text-dark">AFFICHAGE LOCATIONS</a></li>
   <li class="list-group-item"><a href="?action=ajout" class="alert-link text-dark">AJOUT LOCATION</a></li>
  
@@ -228,13 +228,13 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
  <div class="row">
         <div class="form-group col-md-6">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" aria-describedby="" placeholder="description" name="description" value="<?= $description ?>">    
+            <input type="text" class="form-control" id="description" aria-describedby="" placeholder="description" name="loc_description" value="<?= $description ?>">    
         </div>
 
             
         <div class="form-group col-md-6">
             <label for="type">Type</label>
-            <select class="form-control" id="type" name="type" value="">
+            <select class="form-control" id="type" name="loc_type" value="">
                 <option>choisir votre location</option>
                 <option value="appartement"<?php if($type == 'appartement') echo 'selected'; ?>>Appartement</option>
                 <option value="villa" <?php if($type == 'villa') echo 'selected'; ?>>villa</option>
@@ -265,7 +265,7 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
         </div>
         <?php if(!empty($photo)): ?>
         <em>Vous pouvez uploader une nouvelle photo si vous souhaitez la changer</em><br>
-        <img src="<?= $photo ?>" alt="<? $titre ?>" class="card-img-top">
+        <img src="../images/<?= $photo ?>" alt="<? $titre ?>" class="card-img-top">
         <?php endif; ?>
         <input type="hidden" id="photo_actuelle" name="photo_actuelle" value="<?= $photo ?>">    
   </div>

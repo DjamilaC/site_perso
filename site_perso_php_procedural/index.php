@@ -30,7 +30,7 @@ require_once("include/header.php");
             <section class="row container-fluid mx-auto mt-5 mb-5">
 
                 <div class="col-md-4 comfort">
-                    <p><i class="fas fa-suitcase-rolling"></i></p>
+                    <p><i class="fas fa-suitcase-rolling mt-2"></i></p>
                     <h5>Vos vacances de rêve commencent ici</h5>    
                     <p>
                         

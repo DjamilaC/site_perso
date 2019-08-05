@@ -196,7 +196,7 @@ footer{
 }
 h1{
   font-style: italic; 
-  color: hsl(37, 61%, 43%);
+  color: hsl(37, 58%, 61%);
   text-shadow: 2px 2px 5px rgb(27, 27, 27);
   /* font-family: inherit;  */
 }
@@ -243,6 +243,9 @@ h5{
   /* font-weight: bold; */
   color: bisque;
 }
+.form_connexion_inscription{
+  color: bisque;
+}
 
 .form1 label{
 color: hsl(37, 95%, 22%);
@@ -257,6 +260,20 @@ table{
 }
 .admin{
   margin-top: 5rem !important;
+}
+.contact{
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 5px rgb(190, 181, 181);
+}
+.contact p{
+  display: inline-block;
+  margin-left: 2rem;
+  color: bisque;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 2px 2px 5px rgb(190, 181, 181);
+  text-shadow: 2px 2px 5px rgb(27, 27, 27);
+
 }
 
 

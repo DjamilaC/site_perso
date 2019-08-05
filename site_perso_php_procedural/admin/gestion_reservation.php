@@ -17,7 +17,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 $reserv_delete = $bdd->prepare("DELETE FROM reservation WHERE id_reservation = :id_reservation");
 $reserv_delete->bindValue(':id_reservation', $id_reservation, PDO::PARAM_STR);
 
-$location_delete->execute();
+$reserv_delete->execute();
 
 // on redirige vers l'affichage des reservations
 
@@ -35,28 +35,49 @@ if($_POST)
       $data_insert = $bdd->prepare("UPDATE reservation SET num_reservation = :num_reservation, date_debut_vacanc = :date_debut_vacanc, date_fin_vacanc = :date_fin_vacanc, email = :email, duree_vacanc = :duree_vacanc, nbre_vacanciers = :nbre_vacanciers, client_id = :client_id, location_id = :location_id WHERE id_reservation = $id_reservation");
   
 
-      foreach($_POST as $key =>$value)
-          {               
-               $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);                
-          }        
-           
-          $data_insert->execute();  
-      }
+    //   foreach($_POST as $key =>$value)
+    //       {               
+    //            $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);                
+    //       }   
+              
+            $data_insert->bindValue(":email", $email, PDO::PARAM_STR);      
+            $data_insert->bindValue(":num_reservation", $num_reservation, PDO::PARAM_INT);      
+            $data_insert->bindValue(":date_debut_vacanc", $date_debut_vacanc, PDO::PARAM_INT);      
+            $data_insert->bindValue(":date_fin_vacanc", $date_fin_vacanc, PDO::PARAM_INT);      
+            $data_insert->bindValue(":duree_vacanc", $duree_vacanc, PDO::PARAM_INT);      
+            $data_insert->bindValue(":nbre_vacanciers", $nbre_vacanciers, PDO::PARAM_INT);      
+            $data_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);      
+            $data_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);      
+            // $data_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);      
+            
+            $data_insert->execute();           
+    }
       $_GET['action'] = 'affichage';
 
-      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location <strong> $id_reservation </strong>a bien été modifié !! </div>";
-
-    // la requete d'insertion permettant d'inserer une location dans la table 'locations' (requête préparée).
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la reservation <strong>$num_reservation </strong>a bien été enregistré !! </div>";
+        
+    // la requete d'insertion permettant d'inserer une reservation dans la table 'reservation' (requête préparée).
 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
-      $reserv_insert = $bdd->prepare("INSERT into reservation (num_reservation = :num_reservation, date_debut_vacanc = :date_debut_vacanc, date_fin_vacanc = :date_fin_vacanc, email = :email, duree_vacanc = :duree_vacanc, nbre_vacanciers = :nbre_vacanciers, client_id = :client_id, location_id = :location_id");
+      $reserv_insert = $bdd->prepare("INSERT into reservation (num_reservation = :num_reservation, date_debut_vacanc = :date_debut_vacanc, date_fin_vacanc = :date_fin_vacanc, email = :email, duree_vacanc = :duree_vacanc, nbre_vacanciers = :nbre_vacanciers, client_id = :client_id, location_id = :location_id");      
+              
+            $reserv_insert->bindValue(":num_reservation", $num_reservation, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":date_debut_vacanc", $date_debut_vacanc, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":date_fin_vacanc", $date_fin_vacanc, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":email", $email, PDO::PARAM_STR);      
+            $reserv_insert->bindValue(":duree_vacanc", $duree_vacanc, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":nbre_vacanciers", $nbre_vacanciers, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);
 
+            $reserv_insert->execute();    
+    }
       $_GET['action'] = 'affichage';
 
-      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$reference</strong>a bien été ajouté !! </div>";
+      $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong></strong>a bien été ajouté !! </div>";
 
-    }
+   
    
     
 }// Fin ($_POST)   
@@ -66,15 +87,15 @@ require_once("../include/header.php");
 <!-- LIEN LOCATIONS -->
 <hr>
 <ul class="col-md-4 offset-md-4 list-group mt-4 text-center admin">
-  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATAION</li>
-  <li class="list-group-item"><a href="?action=Affichage" class="alert-link text-dark">AFFICHAGE RESERVATIONS</a></li>
-  <li class="list-group-item"><a href="?action=Ajout" class="alert-link text-dark">AJOUT RESERVATION</a></li>
+  <li class="list-group-item bg-secondary text-center text-white">ADMINISTRATION</li>
+  <li class="list-group-item"><a href="?action=affichage" class="alert-link text-dark">AFFICHAGE RESERVATIONS</a></li>
+  <li class="list-group-item"><a href="?action=ajout" class="alert-link text-dark">AJOUT RESERVATION</a></li>
  
 </ul> <hr>
 
 <!--   l'affichage des RESERVATIONS sous forme de tableau HTML -->
 
-<?php if(isset($_GET['action']) && $_GET['action'] == 'Affichage'): ?>
+<?php if(isset($_GET['action']) && $_GET['action'] == 'affichage'): ?>
         <h1 class="display-4 text-center"> Liste des réservations</h1>
 
         <?php echo $validate; 
@@ -103,7 +124,7 @@ require_once("../include/header.php");
 
             <?php endforeach; ?> 
 
-            <td><a href="?action=Modification&id_reservation=<?= $tab['id_reservation'] ?>" class="text-dark"><i class="fas fa-edit"></i></a></td>
+            <td><a href="?action=modification&id_reservation=<?= $tab['id_reservation'] ?>" class="text-dark"><i class="fas fa-edit"></i></a></td>
             <td><a href="?action=suppression&id_reservation=<?= $tab['id_reservation'] ?>" class="text-danger" onclick="return(confirm('En êtes vous certain?'))"><i class="fas fa-trash-alt"></i></a></td>
             
         </tr>
@@ -113,12 +134,12 @@ require_once("../include/header.php");
 
         <!-- FIN AFFICHAGE RESERVATIONS -->
 
-<?php if(isset($_GET['action']) && ($_GET['action'] == 'Ajout' || $_GET['action'] == 'Modification')): ?>
+<?php if(isset($_GET['action']) && ($_GET['action'] == 'ajout' || $_GET['action'] == 'modification')): ?>
 
 <h1 class="col-md-6 offset-md-3 text-center" > <?= $action ?> d'une reservation</h1>
 
 <?php
-if(isset($_GET['id_location']))
+if(isset($_GET['id_reservation']))
 {
   $resultat = $bdd->prepare("SELECT * FROM reservation WHERE  id_reservation = :id_reservation");
 
@@ -126,7 +147,7 @@ if(isset($_GET['id_location']))
   $resultat->execute();
 
   $reservation_actuelle = $resultat->fetch(PDO::FETCH_ASSOC);
-  echo '<pre>'; print_r($reservation_actuelle); echo'</pre>';
+//   echo '<pre>'; print_r($reservation_actuelle); echo'</pre>';
 }
 $num_reservation = (isset($reservation_actuelle['num_reservation']))? $reservation_actuelle['num_reservation'] : '';
 

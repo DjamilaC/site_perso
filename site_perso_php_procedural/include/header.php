@@ -25,7 +25,7 @@
             <div class="row">
 
                 <div class="col-md-1 bg-light">
-                <a href="index.php"><img id="logo" src="<?= URL ?>images/logo_R2.png" alt=""></a>
+                <a href="<?= URL ?>index.php"><img id="logo" src="<?= URL ?>images/logo_R2.png" alt=""></a>
                 </div>
 
                         <!-- la barre de navigation -->
@@ -50,11 +50,12 @@
 
                             <a class="nav-item nav-link" href="<?= URL ?>campings.php">Nos Campings</a>
                             
-                            <a class="nav-item nav-link" href="<?= URL ?>connexion.php?action=deconnexion"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
+                            <a class="nav-item nav-link" href="<?= URL ?>connexion.php?action=deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
 
                             <a class="nav-item nav-link" href="<?= URL ?>panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
                             
-                            <a class="nav-item nav-link" href="<?= URL ?>profil.php" tabindex="-1"><i class="fas fa-envelope"></i> Profil</a>
+                            <a class="nav-item nav-link" href="<?= URL ?>profil.php" tabindex="-1"><i class="fas fa-users"></i> Profil</a>
+                            <a class="nav-item nav-link" href="<?= URL ?>contact.php"><i class="fas fa-envelope"></i> Contact</a>
                                      
                             <?php else: // accés visiteur non connecté ?>
 
@@ -69,8 +70,10 @@
                             <a class="nav-item nav-link" href="<?= URL ?>inscription.php">Inscription</a>
 
                             <a class="nav-item nav-link" href="<?= URL ?>connexion.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+                            
 
                             <a class="nav-item nav-link" href="<?= URL ?>panier.php" tabindex="-1"><i class="fas fa-shopping-cart"></i> Mon panier</a>
+                            <a class="nav-item nav-link" href="<?= URL ?>contact.php"><i class="fas fa-envelope"></i> Contact</a>
 
                             <?php endif; ?>
 
