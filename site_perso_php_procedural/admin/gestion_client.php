@@ -9,55 +9,93 @@ if(!internauteEstConnecteEstAdmin())
 {
     header("Location:" . URL . "connexion.php"); 
 }
+
         // ---------------SUPPRESSION DE LOCATION-----------------
 
 if(isset($_GET['action']) && $_GET['action'] == 'suppression')
 {
   $client_delete = $bdd->prepare("DELETE FROM client WHERE id_client = :id_client");
   $client_delete->bindValue(':id_client', $id_client, PDO::PARAM_STR);
-  $client_delete->execute();
-  
 
-  $_GET['action'] = 'affichage';// on redirige vers l'affichage des clients
+  $client_delete->execute();  
+ // on redirige vers l'affichage des clients
+  
+  $_GET['action'] = 'affichage';
   $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_client </strong>a bien été supprimé !! </div>";
 }
+//-----------MODIFICATION CLIENT-------------------------
+
+// La requete update permettant de modifier un client dans la table 'client' 
+if($_POST)
+    {
+     if(isset($_GET['action']) && $_GET['action'] == 'modification')
+        {
+              $data_update = $bdd->prepare("UPDATE client SET pseudo = :pseudo, mdp= :mdp, nom_client = :nom_client, prenom_client = :prenom_client, email = :email, civilite = :civilite, ville = :ville, code_postal = :code_postal, adresse = :adresse, num_telephone = :num_telephone WHERE id_client = $id_client");
+  
+
+          $data_update->bindValue(":pseudo", $pseudo, PDO::PARAM_STR);      
+          $data_update->bindValue(":mdp", $mdp, PDO::PARAM_STR);      
+          $data_update->bindValue(":nom_client", $nom_client, PDO::PARAM_STR);      
+          $data_update->bindValue(":prenom_client", $prenom_client, PDO::PARAM_STR);      
+          $data_update->bindValue(":email", $email, PDO::PARAM_STR);      
+          $data_update->bindValue(":civilite", $civilite, PDO::PARAM_STR);      
+          $data_update->bindValue(":ville", $ville, PDO::PARAM_STR);      
+          $data_update->bindValue(":code_postal", $code_postal, PDO::PARAM_INT);      
+          $data_update->bindValue(":adresse", $adresse, PDO::PARAM_STR);      
+          $data_update->bindValue(":num_telephone", $num_telephone, PDO::PARAM_INT);
+          
+
+          $data_update->execute();
+          
+
+       $_GET['action'] = 'affichage'; 
+
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'> la location a bien été modifié !! </div>"; 
+      }
 
            //-----------ENREGISTREMENT CLIENT-------------------------
 
             // la requete d'insertion permettant d'inserer un client dans la table 'client' (requête préparée).
+       
 
-if($_POST)
+      if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
-    if(isset($_GET['action']) && $_GET['action'] == 'ajout')
-    {
-      $client_insert = $bdd->prepare("INSERT into client (pseudo, mdp, nom_client, prenom_client, email, civilite, ville, code_postal, adresse, num_telephone) VALUES (:pseudo, :mdp, :nom_client, :prenom_client, :email, :civilite , :ville, :code_postal, :adresse, :num_telephone)");
-      foreach($_POST as $key => $value)
-         {            
-            $client_insert->bindValue(":$key", $value, PDO::PARAM_STR); 
-         }             
-             
+      $client_insert = $bdd->prepare("INSERT into client (pseudo, mdp, nom_client, prenom_client, email, civilite, ville, code_postal, adresse, num_telephone, statut) VALUES (:pseudo, :mdp, :nom_client, :prenom_client, :email, :civilite , :ville, :code_postal, :adresse, :num_telephone, :statut)");
+
+      // foreach($_POST as $key => $value)
+      //    {            
+      //       $client_insert->bindValue(":$key", $value, PDO::PARAM_STR); 
+      //    }    
+      
+          $client_insert->bindValue(":pseudo", $pseudo,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":mdp", $mdp,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":nom_client", $nom_client,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":prenom_client", $prenom_client, PDO::PARAM_STR);      
+          $client_insert->bindValue(":email", $email,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":civilite", $civilite,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":ville", $ville,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":code_postal", $code_postal,
+           PDO::PARAM_INT);      
+          $client_insert->bindValue(":adresse", $adresse,
+           PDO::PARAM_STR);      
+          $client_insert->bindValue(":num_telephone", $num_telephone, PDO::PARAM_INT);
+          $client_insert->bindValue(":statut", $statut, PDO::PARAM_INT);
+
+          $client_insert->execute(); 
     }
     
       $_GET['action'] = 'affichage';
 
       $validate.="<div class='alert alert-success col-md-6 offset-md-3 text-center'>la location n° <strong>$pseudo</strong> a bien été ajouté !! </div>";   
     
-            // La requete update permettant de modifier un client dans la table 'client'.
-      if(isset($_GET['action']) && $_GET['action'] == 'modification')
-        {
-              $data_insert = $bdd->prepare("UPDATE client SET pseudo = :pseudo, mdp= :mdp, nom_client = :nom_client, prenom_client = :prenom_client, email = :email, civilite = :civilite, ville = :ville, code_postal = :code_postal, adresse = :adresse, num_telephone = :num_telephone WHERE id_client = $id_client");
-  
-
-      foreach($_POST as $key =>$value)
-            {           
-            $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);
-            }            
-          $data_insert->execute();
-        }      
-          
-      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'> la location a bien été modifié !! </div>";   
-      
-      $_GET['action'] = 'affichage';
+            
+     
   
 } // Fin ($_POST)
     

@@ -18,14 +18,13 @@ $reserv_delete = $bdd->prepare("DELETE FROM reservation WHERE id_reservation = :
 $reserv_delete->bindValue(':id_reservation', $id_reservation, PDO::PARAM_STR);
 
 $reserv_delete->execute();
-
 // on redirige vers l'affichage des reservations
 
 $_GET['action'] = 'affichage';
 $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_reservation </strong>a bien été supprimé !! </div>";
 }
 
-//-----------ENREGISTREMENT RESERVATION-------------------------
+//-----------MODIFICATION RESERVATION-------------------------
 
 if($_POST)
 {
@@ -34,7 +33,6 @@ if($_POST)
               // La requete update permettant de modifier une location dans la table 'locations'.
       $data_insert = $bdd->prepare("UPDATE reservation SET num_reservation = :num_reservation, date_debut_vacanc = :date_debut_vacanc, date_fin_vacanc = :date_fin_vacanc, email = :email, duree_vacanc = :duree_vacanc, nbre_vacanciers = :nbre_vacanciers, client_id = :client_id, location_id = :location_id WHERE id_reservation = $id_reservation");
   
-
     //   foreach($_POST as $key =>$value)
     //       {               
     //            $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);                
@@ -46,29 +44,29 @@ if($_POST)
             $data_insert->bindValue(":date_fin_vacanc", $date_fin_vacanc, PDO::PARAM_INT);      
             $data_insert->bindValue(":duree_vacanc", $duree_vacanc, PDO::PARAM_INT);      
             $data_insert->bindValue(":nbre_vacanciers", $nbre_vacanciers, PDO::PARAM_INT);      
-            $data_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);      
-            $data_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);      
-            // $data_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);      
-            
-            $data_insert->execute();           
-    }
-      $_GET['action'] = 'affichage';
+            $data_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);    
+            $data_insert->execute(); 
+           $_GET['action'] = 'affichage';
 
-      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la reservation <strong>$num_reservation </strong>a bien été enregistré !! </div>";
+      $validate.= "<div class='alert alert-success col-md-6 offset-md-3 text-center'>la reservation <strong>$num_reservation </strong>a bien été enregistré !! </div>";           
+    }
+      
         
     // la requete d'insertion permettant d'inserer une reservation dans la table 'reservation' (requête préparée).
 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
     {
-      $reserv_insert = $bdd->prepare("INSERT into reservation (num_reservation = :num_reservation, date_debut_vacanc = :date_debut_vacanc, date_fin_vacanc = :date_fin_vacanc, email = :email, duree_vacanc = :duree_vacanc, nbre_vacanciers = :nbre_vacanciers, client_id = :client_id, location_id = :location_id");      
+      $reserv_insert = $bdd->prepare("INSERT into reservation (num_reservation, date_debut_vacanc, date_fin_vacanc, email, duree_vacanc, nbre_vacanciers, client_id, location_id) VALUES(:num_reservation, :date_debut_vacanc, :date_fin_vacanc, :email, :duree_vacanc, :nbre_vacanciers, :client_id, :location_id)");      
               
             $reserv_insert->bindValue(":num_reservation", $num_reservation, PDO::PARAM_INT);      
             $reserv_insert->bindValue(":date_debut_vacanc", $date_debut_vacanc, PDO::PARAM_INT);      
             $reserv_insert->bindValue(":date_fin_vacanc", $date_fin_vacanc, PDO::PARAM_INT);      
-            $reserv_insert->bindValue(":email", $email, PDO::PARAM_STR);      
+            $reserv_insert->bindValue(":email", $email,
+             PDO::PARAM_STR);      
             $reserv_insert->bindValue(":duree_vacanc", $duree_vacanc, PDO::PARAM_INT);      
             $reserv_insert->bindValue(":nbre_vacanciers", $nbre_vacanciers, PDO::PARAM_INT);      
-            $reserv_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);      
+            $reserv_insert->bindValue(":client_id", $client_id,
+             PDO::PARAM_INT);      
             $reserv_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);
 
             $reserv_insert->execute();    

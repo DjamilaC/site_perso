@@ -2,8 +2,8 @@
 require_once("include/init.php");
 extract($_GET);
 
-    $resultat =$bdd->prepare("SELECT * FROM locations WHERE type = :type");
-    $resultat->bindValue(':type', 'villa' , PDO::PARAM_STR);
+    $resultat =$bdd->prepare("SELECT * FROM locations WHERE loc_type = :loc_type");
+    $resultat->bindValue(':loc_type', 'villa' , PDO::PARAM_STR);
     $resultat->execute();
 
     require_once("include/header.php");
@@ -22,7 +22,7 @@ extract($_GET);
                             <img src="images/<?= $location['photo'] ?>" alt="<?= $location['titre'] ?>" class="tile-image"/>
                             <div class="tile-text">
                                 <h2 class="tile-title"><?= $location['titre'] ?></h2>
-                                <p class="tile-description"><?= $location['description'] . '<br>' . $location['ville'] . '<br>' . $location['etat'] ?></p>
+                                <p class="tile-description"><?= $location['loc_description'] . '<br>' . $location['ville'] . '<br>' . $location['etat'] ?></p>
                             </div>
                         </a>
                     </div>
