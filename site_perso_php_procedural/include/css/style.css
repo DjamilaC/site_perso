@@ -44,7 +44,7 @@ body{
 /* .navbar-expand-lg{
   border-inline-start: solid rgb(170, 167, 167) 1px;    
 }  */
-
+/* Ancre */
 .fa-arrow-circle-up{
   color: hsl(50, 94%, 25%);
      
@@ -54,7 +54,7 @@ body{
   font-size: 200%;
   position: fixed;
   left: 115rem;
-  top: 43rem;
+  top: 39rem;
  }
 
 footer{
@@ -134,8 +134,10 @@ footer{
   bottom: 0;
   padding: 0 .8em;
   background: hsl(51, 100%, 92%);
+  opacity: 0.65;
   /* color: #BB3E92; */
-  color: hsl(51, 100%, 35%);
+  /* color: hsl(45, 33%, 2%); */
+  color: black;
   transition: transform .5s;
   transform: translateY(110%);
   box-shadow: 0 -4px 33px rgba(0,0,0,.7);
@@ -271,8 +273,10 @@ table{
   color: bisque;
   font-weight: bold;
   font-size: 1.5rem;
-  box-shadow: 2px 2px 5px rgb(190, 181, 181);
+  padding-top: .5rem; 
+  /* box-shadow: 2px 2px 5px rgb(190, 181, 181); */
   text-shadow: 2px 2px 5px rgb(27, 27, 27);
+  text-align: center;
 
 }
 

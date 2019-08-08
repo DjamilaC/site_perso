@@ -11,6 +11,7 @@ require_once("include/header.php");
                 
                 <p><i class="fas fa-envelope"></i> &nbsp Email: djamila.chabane@lepoles.com</p>
                 <p><i class="fas fa-phone"></i> &nbsp  07 53 26 85 76</p>
+                <p> <i class="fas fa-map-marker-alt"></i> &nbsp 27 Avenue Gambetta 94600 Choisy-le-roi</p>
             </div>
             <form method="post" action="" class="col-md-4 offset-md-4 mt-5 mb-5 form_connexion_inscription">
 

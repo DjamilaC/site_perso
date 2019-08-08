@@ -84,10 +84,19 @@ require_once("include/header.php");
                     </section>
 
         <!--------------------------------Formulaire de reservation--------------------------------- -->
-
+        <?php
+            extract($_POST); 
+            if(internauteEstConnecte())// si l'internaute est connecté, il n'a rien à faire sur la page 
+            {
+                header("Location: profil.php"); 
+            }
+            if (isset($_GET['action']) && $_GET['action'] == 'reserver'){
+                header("Location: profil.php");
+            }
+        ?>
                     <section class="col-md-3 ml-3 mt-5 mb-2 reservation">
                         <h4>Choisissez vos dates</h4>
-                            <form method="post" action="" class="form_reservation mt-4">
+                            <form method="post" action="reservation.php" class="form_reservation mt-4">
 
                                     <div class="form-group ">
                                         <label for="date_debut_vacanc">Date debut de séjour</label>
@@ -99,7 +108,7 @@ require_once("include/header.php");
                                         <input type="date" class="form-control" id="date_fin_vacanc" placeholder="date fin de sejour" name="date_fin_vacanc">
                                     </div>             
 
-                                    <button type="submit" class="btn btn-primary col-md-12">Reserver</button>
+                                    <button type="submit" name="reserver" class="btn btn-primary col-md-12">Reserver</button>
 
                             </form>
                     </section>

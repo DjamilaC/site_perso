@@ -73,7 +73,7 @@ if($_POST)
     {
             // La requete update permettant de modifier une location dans la table 'locations'.
 
-            $data_update = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, description = :description, type = :type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = id_location");
+            $data_update = $bdd->prepare("UPDATE locations SET reference = :reference, titre = :titre, adresse = :adresse, ville = :ville, code_postal = :code_postal, loc_description = :loc_description, loc_type = :loc_type, prix = :prix, etat = :etat, photo = :photo WHERE id_location = $id_location");
   
 
       foreach($_POST as $key =>$value)
@@ -181,8 +181,8 @@ $titre = (isset($location_actuelle['titre']))? $location_actuelle['titre'] : '';
 $adresse = (isset($location_actuelle['adresse']))? $location_actuelle['adresse'] : '';
 $ville = (isset($location_actuelle['ville']))? $location_actuelle['ville'] : '';
 $code_postal = (isset($location_actuelle['code_postal']))? $location_actuelle['code_postal'] : '';
-$description = (isset($location_actuelle['description']))? $location_actuelle['description'] : '';
-$type = (isset($location_actuelle['type']))? $location_actuelle['type'] : '';
+$loc_description = (isset($location_actuelle['loc_description']))? $location_actuelle['loc_description'] : '';
+$loc_type = (isset($location_actuelle['loc_type']))? $location_actuelle['loc_type'] : '';
 $prix = (isset($location_actuelle['prix']))? $location_actuelle['prix'] : '';
 $etat = (isset($location_actuelle['etat']))? $location_actuelle['etat'] : '';
 $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
@@ -227,18 +227,18 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
 
  <div class="row">
         <div class="form-group col-md-6">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" aria-describedby="" placeholder="description" name="loc_description" value="<?= $description ?>">    
+            <label for="loc_description">Description</label>
+            <input type="text" class="form-control" id="loc_description" aria-describedby="" placeholder="loc_description" name="loc_description" value="<?= $loc_description ?>">    
         </div>
 
             
         <div class="form-group col-md-6">
-            <label for="type">Type</label>
-            <select class="form-control" id="type" name="loc_type" value="">
+            <label for="loc_type">Type</label>
+            <select class="form-control" id="loc_type" name="loc_type" value="">
                 <option>choisir votre location</option>
-                <option value="appartement"<?php if($type == 'appartement') echo 'selected'; ?>>Appartement</option>
-                <option value="villa" <?php if($type == 'villa') echo 'selected'; ?>>villa</option>
-                <option value="camping" <?php if($type == 'camping') echo 'selected'; ?>>camping</option>
+                <option value="appartement"<?php if($loc_type == 'appartement') echo 'selected'; ?>>Appartement</option>
+                <option value="villa" <?php if($loc_type == 'villa') echo 'selected'; ?>>villa</option>
+                <option value="camping" <?php if($loc_type == 'camping') echo 'selected'; ?>>camping</option>
             </select>              
         </div>
         

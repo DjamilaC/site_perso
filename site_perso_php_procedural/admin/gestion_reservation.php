@@ -38,13 +38,15 @@ if($_POST)
     //            $data_insert->bindValue(":$key", $value, PDO::PARAM_STR);                
     //       }   
               
-            $data_insert->bindValue(":email", $email, PDO::PARAM_STR);      
             $data_insert->bindValue(":num_reservation", $num_reservation, PDO::PARAM_INT);      
             $data_insert->bindValue(":date_debut_vacanc", $date_debut_vacanc, PDO::PARAM_INT);      
             $data_insert->bindValue(":date_fin_vacanc", $date_fin_vacanc, PDO::PARAM_INT);      
+            $data_insert->bindValue(":email", $email, PDO::PARAM_STR);      
             $data_insert->bindValue(":duree_vacanc", $duree_vacanc, PDO::PARAM_INT);      
             $data_insert->bindValue(":nbre_vacanciers", $nbre_vacanciers, PDO::PARAM_INT);      
-            $data_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);    
+            $data_insert->bindValue(":client_id", $client_id, PDO::PARAM_INT);
+            $data_insert->bindValue(":location_id", $location_id, PDO::PARAM_INT);
+
             $data_insert->execute(); 
            $_GET['action'] = 'affichage';
 
