@@ -13,12 +13,24 @@ require_once("include/header.php");
                     
                     <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
 
-                    <div class="col-md-6 mt-5 ml-5 search">
-                        <form class="form-inline">
-                            <input class="col-md-3 mt-1 mb-1" type="text" placeholder="rechercher">
-                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
-                            <input class="col-md-3 offset-md-1 mt-1 mb-1" type="text" placeholder="">
+                    <div class="col-md-6 mt-5 ml-2 search">
+                        <form class="form-inline recherche col-md-12" action="recherche_location.php" method="post">
 
+                            <div class="row">                           
+
+                            <label for="date_debut_vacanc">Date d'arrivée</label>
+                            <input class="col-md-2 offset-md-1 mt-1 mb-1" type="date" placeholder="date d'arrivée">
+
+                            <label for="date_fin_vacanc">Date départ</label>
+                            <input class="col-md-2 mt-1 mb-1" type="date" placeholder="date départ">
+
+                            <label for="type">Type</label>
+                            <input class="col-md-2 offset-md-1 mt-1 mb-1" type="text" placeholder="type">
+                            </div>
+
+                            <div class="row mx-auto col-md-12">
+                            <button type="submit" class="col-md-3 mt-1 mb-1 ml-5 bg bg-secondary">Rechercher</button>
+                            </div>
                         </form>
                     </div>
 

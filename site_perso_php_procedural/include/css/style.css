@@ -38,7 +38,13 @@ body{
   top: 16%;
   right: 2%; 
   width: 60%;
-  padding: .5rem;        
+  padding: .5rem;
+  margin: 0;        
+}
+
+.rechercher{
+  margin: 0;
+  padding: 0;
 }
 
 /* .navbar-expand-lg{
@@ -210,21 +216,24 @@ h1{
 }
 .reservation{
   box-shadow: 2px 2px 5px grey;
-  height: 70%; 
-  /* padding: 2%;
+  height: 5rem; 
+  margin: 0;
+  padding: 0;
+  
 }
 .form_reservation{
-  border-radius: 2%;
-  /*     */
-  /* margin-left: 40%; */
-  /* width: 15vw;
-  height: 20vh; */
-
-}
+  border-radius: 5%; 
+  
+ }
 .form_reservation .btn:hover{
-background: grey;
-margin-bottom: 2rem;
-}
+transform: scale(1.2);
+background: rgb(37, 35, 35) !important;
+transition: .7s
+} 
+/* .form_reservation .btn:hover{
+/* background: grey; */
+/* }  */
+
 .fa-suitcase-rolling{
   font-size: 200%;
   /* color: grey; */
@@ -267,6 +276,8 @@ table{
   background: rgba(0, 0, 0, 0.4);
   box-shadow: 2px 2px 5px rgb(190, 181, 181);
 }
+
+/* la page contact */
 .contact p{
   display: inline-block;
   margin-left: 2rem;
@@ -277,9 +288,14 @@ table{
   /* box-shadow: 2px 2px 5px rgb(190, 181, 181); */
   text-shadow: 2px 2px 5px rgb(27, 27, 27);
   text-align: center;
-
 }
 
+/* la page reservation */
+
+.reservation-form{
+  background-color: rgb(177, 158, 128);
+  padding-bottom: 2rem;
+}
 
 
 

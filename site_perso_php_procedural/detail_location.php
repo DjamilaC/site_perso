@@ -94,23 +94,12 @@ require_once("include/header.php");
                 header("Location: profil.php");
             }
         ?>
-                    <section class="col-md-3 ml-3 mt-5 mb-2 reservation">
-                        <h4>Choisissez vos dates</h4>
-                            <form method="post" action="reservation.php" class="form_reservation mt-4">
+                    <section class="col-md-2 mt-5 reservation mx-auto ">
+                    
+                        <form method="post" action="reservation.php" class="form_reservation mx-auto">
+                            <button type="submit" name="reserver" class="btn btn-primary col-md-6 offset-3 mt-3">Reserver</button>
+                        </form>
 
-                                    <div class="form-group ">
-                                        <label for="date_debut_vacanc">Date debut de séjour</label>
-                                        <input type="date" class="form-control" id="date_debut_vacanc" placeholder="date debut de sejour" name="date_debut_vacanc">
-                                    </div> 
-
-                                    <div class="form-group ">
-                                        <label for="date_fin_vacanc">Date fin de séjour</label>
-                                        <input type="date" class="form-control" id="date_fin_vacanc" placeholder="date fin de sejour" name="date_fin_vacanc">
-                                    </div>             
-
-                                    <button type="submit" name="reserver" class="btn btn-primary col-md-12">Reserver</button>
-
-                            </form>
                     </section>
 
            </div> <!--Fin de la row-->           
