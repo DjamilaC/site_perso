@@ -1,7 +1,12 @@
 <?php
 require_once("include/init.php");
 extract($_GET);
+extract($_POST);
 require_once("include/header.php");
+
+
+
+
 ?>
 <!-- Page Content -->
 
@@ -12,27 +17,27 @@ require_once("include/header.php");
                 <div class="row">
                     
                     <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
+                    <div class="col-md-6 mt-5 ml-5 search">
+                        <form class="form-inline recherche" action="recherche_location.php" method="post">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-5 mb-1 dateclass placeholderclass" type="date" placeholder="date d'arrivée" onClick="$(this).removeClass('placeholderclass')">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-5 mb-1 dateclass placeholderclass" type="date" placeholder="date départ" onClick="$(this).removeClass('placeholderclass')">
+                            <select class="ml-5" name="loc_type" id="loc_type">
+                                <option value="appartement">Appartement</option>
+                                                        <!-- <?php if($loc_type == 'appartement') echo 'selected'; ?> -->
+                                <option value="villa">Villa</option>
+                                                        <!-- <?php if($loc_type == 'villa') echo 'selected'; ?> -->
+                                <option value="camping">Camping</option>
+                                                        <!-- <?php if($loc_type == 'camping') echo 'selected'; ?> -->
+                            </select>
 
-                    <div class="col-md-6 mt-5 ml-2 search">
-                        <form class="form-inline recherche col-md-12" action="recherche_location.php" method="post">
+                            <input class="col-md-2 offset-md-1 ml-5 mt-1 mb-1" type="submit" placeholder="Rechercher">
+                            
 
-                            <div class="row">                           
 
-                            <label for="date_debut_vacanc">Date d'arrivée</label>
-                            <input class="col-md-2 offset-md-1 mt-1 mb-1" type="date" placeholder="date d'arrivée">
-
-                            <label for="date_fin_vacanc">Date départ</label>
-                            <input class="col-md-2 mt-1 mb-1" type="date" placeholder="date départ">
-
-                            <label for="type">Type</label>
-                            <input class="col-md-2 offset-md-1 mt-1 mb-1" type="text" placeholder="type">
-                            </div>
-
-                            <div class="row mx-auto col-md-12">
-                            <button type="submit" class="col-md-3 mt-1 mb-1 ml-5 bg bg-secondary">Rechercher</button>
-                            </div>
                         </form>
-                    </div>
+                    </div>           
+
+                    
 
                 </div>
         

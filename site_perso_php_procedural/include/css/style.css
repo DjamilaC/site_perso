@@ -35,12 +35,24 @@ body{
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
-  top: 16%;
+  top: 12%;
   right: 2%; 
-  width: 60%;
+  width: 50%;
   padding: .5rem;
   margin: 0;        
 }
+.dateclass{
+  width: 100%;
+}
+.dateclass.placeholderclass::before{
+  width: 100%;
+  content: attr(placeholder);
+}
+.dateclass.placeholderclass{
+  width: 75%;
+  content:"";
+}
+
 
 .rechercher{
   margin: 0;
