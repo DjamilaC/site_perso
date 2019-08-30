@@ -5,8 +5,6 @@ extract($_POST);
 require_once("include/header.php");
 
 
-
-
 ?>
 <!-- Page Content -->
 
@@ -17,11 +15,12 @@ require_once("include/header.php");
                 <div class="row">
                     
                     <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
-                    <div class="col-md-6 mt-5 ml-5 search">
+                    <div class="col-md-6 mt-5 ml-2 search">
                         <form class="form-inline recherche" action="recherche_location.php" method="post">
-                            <input class="col-md-3 offset-md-1 mt-1 ml-5 mb-1 dateclass placeholderclass" type="date" placeholder="date d'arrivée" onClick="$(this).removeClass('placeholderclass')">
-                            <input class="col-md-3 offset-md-1 mt-1 ml-5 mb-1 dateclass placeholderclass" type="date" placeholder="date départ" onClick="$(this).removeClass('placeholderclass')">
-                            <select class="ml-5" name="loc_type" id="loc_type">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="date d'arrivée" onClick="$(this).removeClass('placeholderclass')">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="date départ" onClick="$(this).removeClass('placeholderclass')">
+                            <select class="ml-2" name="loc_type" id="loc_type">
+                                <option value="appartement">Type</option>
                                 <option value="appartement">Appartement</option>
                                                         <!-- <?php if($loc_type == 'appartement') echo 'selected'; ?> -->
                                 <option value="villa">Villa</option>
@@ -30,7 +29,7 @@ require_once("include/header.php");
                                                         <!-- <?php if($loc_type == 'camping') echo 'selected'; ?> -->
                             </select>
 
-                            <input class="col-md-2 offset-md-1 ml-5 mt-1 mb-1" type="submit" placeholder="Rechercher">
+                            <button class="ml-3" type="submit">Rechercher</button>
                             
 
 
