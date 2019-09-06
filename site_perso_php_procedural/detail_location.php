@@ -88,7 +88,7 @@ require_once("include/header.php");
             extract($_POST); 
             if(internauteEstConnecte())// si l'internaute est connecté, il n'a rien à faire sur la page 
             {
-                header("Location: profil.php"); 
+                // header("Location: profil.php"); 
             }
             if (isset($_GET['action']) && $_GET['action'] == 'reserver'){
                 header("Location: profil.php");

@@ -24,6 +24,15 @@ define("URL", "http://localhost/site_perso/site_perso_php_procedural/");
 // -----------------------VARIABLES
 
 $error = ''; // message d'erreur
+$error1 = '';
+$error2 = '';
+$error3 = '';
+$error4 = '';
+$error5 = '';
+$error6 = '';
+$error7 = '';
+$error8 = '';
+
 $validate = ''; // message de validation
 $content = ''; // permettra de placer du contenu où l'on souhaite
 

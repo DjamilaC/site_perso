@@ -17,8 +17,8 @@ require_once("include/header.php");
                     <img class="image_header col-md-12" src="images/image_header_R.jpg" alt="">
                     <div class="col-md-6 mt-5 ml-2 search">
                         <form class="form-inline recherche" action="recherche_location.php" method="post">
-                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="date d'arrivée" onClick="$(this).removeClass('placeholderclass')">
-                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="date départ" onClick="$(this).removeClass('placeholderclass')">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="Date d'arrivée" onClick="$(this).removeClass('placeholderclass')">
+                            <input class="col-md-3 offset-md-1 mt-1 ml-2 mb-1 dateclass placeholderclass" type="date" placeholder="Date départ" onClick="$(this).removeClass('placeholderclass')">
                             <select class="ml-2" name="loc_type" id="loc_type">
                                 <option value="appartement">Type</option>
                                 <option value="appartement">Appartement</option>
@@ -104,7 +104,7 @@ require_once("include/header.php");
                 <div class="col-md-4 mt-4">
 
                     <div class="card mx-auto" style="width: 18rem;">
-                        <a href="<?= URL ?>appartements.php"><img src="images/image4.jpg" class="card-img-top" alt="..."></a> 
+                        <a href="<?= URL ?>appartements.php"><img src="images/appartement_pix.jpg" class="card-img-top" alt="..."></a> 
                         <div class="card-body">
                             
                             <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>
@@ -117,7 +117,7 @@ require_once("include/header.php");
                 <div class="col-md-4 mt-4">
                         
                     <div class="card mx-auto" style="width: 18rem;">
-                        <a href="<?= URL ?>villas.php"><img src="images/image3.jpg" class="card-img-top" alt="..."></a>
+                        <a href="<?= URL ?>villas.php"><img src="images/villas_pix.jpg" class="card-img-top" alt="..."></a>
 
                         <div class="card-body">                                    
                             <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magnam aliquam minus dignissimos dolor at ad! Ullam eveniet est laboriosam dicta minima porro maiores </p>

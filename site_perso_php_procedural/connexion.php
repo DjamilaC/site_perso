@@ -13,7 +13,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnexion')
 {    
     unset($_SESSION);
     session_destroy();
-    header("Location:index.php");
+    header("Location: index.php");
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'validate') {
