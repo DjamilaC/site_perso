@@ -13,7 +13,7 @@ require_once("include/header.php");
 ?>
 <h1 class="text text-center mt-3 mb-3">Bienvenue dans nos appartements</h1>
   
-  <section class="container">
+  <section id="container">
         <?php 
             while ($location = $resultat->fetch(PDO::FETCH_ASSOC)) : ?>         
                     <div class="tile-wrap">

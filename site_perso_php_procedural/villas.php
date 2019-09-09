@@ -16,7 +16,7 @@ extract($_GET);
   <section id="container">
         <?php 
             while ($location = $resultat->fetch(PDO::FETCH_ASSOC)) : ?> 
-                <!-- <div class="card-tile">                 -->
+                
                     <div class="tile-wrap">
                         <a href="detail_location.php?id=<?= $location['id_location']?>">
                             <img src="images/<?= $location['photo'] ?>" alt="<?= $location['titre'] ?>" class="tile-image"/>
@@ -27,7 +27,7 @@ extract($_GET);
                         </a>
                     </div>
                   
-            <!-- </div> -->
+            
         <?php endwhile; ?> 
   </section>
 

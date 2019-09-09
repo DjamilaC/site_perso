@@ -44,24 +44,20 @@ body{
 .dateclass{
   width: 100%;
 }
-.dateclass.placeholderclass::before{
+.dateclass::before{
   width: 100%;
   content: attr(placeholder);
 }
-.dateclass.placeholderclass{
+.dateclass{
   width: 75%;
   content:"";
 }
-
 
 .rechercher{
   margin: 0;
   padding: 0;
 }
 
-/* .navbar-expand-lg{
-  border-inline-start: solid rgb(170, 167, 167) 1px;    
-}  */
 /* Ancre */
 .fa-arrow-circle-up{
   color: hsl(50, 94%, 25%);
@@ -72,7 +68,7 @@ body{
   font-size: 200%;
   position: fixed;
   left: 115rem;
-  top: 39rem;
+  top: 55rem;
  }
 
 footer{
@@ -308,6 +304,20 @@ table{
   background-color: rgb(177, 158, 128);
   padding-bottom: 2rem;
 }
+
+.rs a{
+text-decoration: none;
+color: rgb(93, 87, 87) ;
+font-size: 2.5rem;
+/* color: grey; */
+}
+.suivez-nous{
+  font-size: 1.5rem;
+  color: hsl(37, 95%, 22%); 
+}
+/* .rs a i{
+  color: grey ;
+} 
 
 
 

@@ -1,10 +1,11 @@
 
 
-<section>
-<a href="#logo"> <button class="btn-ancre" type="button"> <i class="fas fa-arrow-circle-up" aria-hidden="true"></i></button></a>
-</section>
+
 
 <footer class="col-md-12">
+            <div>
+            <button class="btn-ancre" type="button" onclick="window.location.href='#logo'"><i class="fas fa-arrow-circle-up" aria-hidden="true"></i></button>
+            </div>
             <div class="row col-md-12 pt-5">
                 <div class="col-md-3">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit ad! Ullam eveniet est laboriosam.</p> 
@@ -19,13 +20,28 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit ad! Ullam eveniet est laboriosam.</p> 
                 </div>     
             </div>
-            <div class="row rs">
-                <p class="col-md-4 mx-auto offset-4">Suivez-nous</p>                
-            </div>
-            <div class="row rs">
-                <div class="col-md-4 offset-5">
-                <i class="fab fa-facebook-square"></i> &nbsp <i class="fab fa-twitter-square"></i> &nbsp <i class="fab fa-instagram"></i>                     
-                </div>
+            <br>
+            <br>
+
+            
+            <div class="row rs">                
+
+                <div class="col-md-4 offset-5">                
+                <p class="mx-auto suivez-nous">Suivez-nous:</p>
+                <a href="#">
+                <i class="fab fa-facebook-square"></i>
+                </a> 
+
+                <a href="#">
+                <i class="fab fa-twitter-square"></i>
+                </a>
+                  
+                <a href="#">
+                <i class="fab fa-instagram"></i>
+                </a>
+
+                
+            </div>        
             </div>        
         
         </footer>

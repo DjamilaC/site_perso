@@ -22,7 +22,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
   $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_location </strong>a bien été supprimé !! </div>";
 }
 
-                        //-----------ENREGISTREMENT PRODUIT-------------------------
+                        //-----------ENREGISTREMENT LOCATION-------------------------
 
 if($_POST)
 {
@@ -36,7 +36,7 @@ if($_POST)
         $nom_photo = $reference . '-' . $_FILES['photo']['name']; // on redéfinit le nom de la photo en concaténant la référence saisi dans le formulaire avec le nom de la photo
         echo $nom_photo . '<br>';
 
-        $photo_bdd = URL . "../images/$nom_photo"; // on définit l'URL de la photo, c'est ce que l'on conservera en BDD
+        $photo_bdd = "$nom_photo"; // on définit l'URL de la photo, c'est ce que l'on conservera en BDD
         echo $photo_bdd . '<br>';
 
         $photo_dossier = RACINE_SITE . "images/$nom_photo"; // on définit le chemin physique de la photo sur le disque dur du serveur, c'est ce qui nous permettra de copier la photo dans le dossier photo
@@ -261,15 +261,15 @@ $photo = (isset($location_actuelle['photo']))? $location_actuelle['photo'] : '';
 <div class="row">
         <div class="form-group col-md-6">
             <label for="photo">Photo</label>
-            <input type="file" class="form-control" id="photo" aria-describedby="" placeholder="" name="photo" >    
+            <input type="file" class="form-control" id="photo" aria-describedby="" placeholder="" name="photo">    
         </div>
         <?php if(!empty($photo)): ?>
         <em>Vous pouvez uploader une nouvelle photo si vous souhaitez la changer</em><br>
-        <img src="../images/<?= $photo ?>" alt="<? $titre ?>" class="card-img-top">
+        <img src="../images/<?= $photo ?>" alt="<?=$titre ?>" class="card-img-top">
         <?php endif; ?>
         <input type="hidden" id="photo_actuelle" name="photo_actuelle" value="<?= $photo ?>">    
   </div>
-    <button type="submit" class="btn btn-danger col-md-4 offset-md-4"><?= $action ?></button>
+    <button type="submit" class="btn btn-danger col-md-4 offset-md-4 mt-3"><?= $action ?></button>
 </form>
 <?php endif; ?>
 </section>

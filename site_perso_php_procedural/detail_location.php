@@ -94,10 +94,10 @@ require_once("include/header.php");
                 header("Location: profil.php");
             }
         ?>
-                    <section class="col-md-2 mt-5 reservation mx-auto ">
+                    <section class="row col-md-2 mt-5 reservation">
                     
                         <form method="post" action="reservation.php" class="form_reservation mx-auto">
-                            <button type="submit" name="reserver" class="btn btn-primary col-md-6 offset-3 mt-3">Reserver</button>
+                            <button type="submit" name="reserver" class="btn btn-primary col-md-12 mt-3">Reserver</button>
                         </form>
 
                     </section>
