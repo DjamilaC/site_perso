@@ -80,13 +80,13 @@ require_once("include/header.php");
                 <div id="carouselExampleFade" class="carousel slide carousel-fade col-md-12 mx-auto" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active col-md-12">
-                            <img src="images/slider1.jpg" class="d-block w-80" alt="...">
+                            <img src="images/slider1.jpg" class="d-block w-80 col-md-12" alt="...">
                         </div>
                         <div class="carousel-item col-md-12">
-                            <img src="images/slider2.jpg" class="d-block w-80" alt="...">
+                            <img src="images/slider2.jpg" class="d-block w-80 col-md-12" alt="...">
                         </div>
                         <div class="carousel-item col-md-12">
-                            <img src="images/slider3.jpg" class="d-block w-80" alt="...">
+                            <img src="images/slider3.jpg" class="d-block w-80 col-md-12" alt="...">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

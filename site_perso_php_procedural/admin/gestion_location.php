@@ -22,7 +22,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression')
   $validate.="<div class='alert-success col-md-6 offset-md-3 text-center'>la location n° <strong> $id_location </strong>a bien été supprimé !! </div>";
 }
 
-                        //-----------ENREGISTREMENT LOCATION-------------------------
+              //-----------MODIFICATION LOCATION-------------------------
 
 if($_POST)
 {
@@ -46,6 +46,7 @@ if($_POST)
 
      
     }
+    
             // la requete d'insertion permettant d'inserer une location dans la table 'locations' (requête préparée).
 
     if(isset($_GET['action']) && $_GET['action'] == 'ajout')
